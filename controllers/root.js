@@ -64,8 +64,6 @@ const allList = async (req, res) => {
       "description": description
     });
   }
-
-
   // render the page and send data to the page
   res.render('allList', { title: 'Express', dictionary });
 }
@@ -194,10 +192,49 @@ const addList = async (text1, text2, description) => {
 
 }
 
+  // count number of id_tv and id_tt in Translate
+  const count = async (value) => {
+    try {
+      const data = await Translate.find({id_tv: value});
+      return data.length;
+    } catch (error) {
+      logger.error(error);
+    }
+  }
+  const count2 = async (value) => {
+    try {
+      const data = await Translate.find({id_tt: value});
+      return data.length;
+    } catch (error) {
+      logger.error(error);
+    }
+  }
+
+const delete_list = async (req, res) => {
+  let { id } = req.body;
+  let word = find_word(id, Translate);
+  let id_tv = word.id_tv;
+  let id_tt = word.id_tt;
+  await Translate.deleteOne({ _id: id });
+
+  // count number of id_tv and id_tt in Translate
+  let count_tv = await count(id_tv, Translate);
+  let count_tt = await count2(id_tt, Translate);
+
+  if (count_tv === 0) {
+    await Vietnamese.deleteOne({ _id: id_tv });
+  }
+  if (count_tt === 0) {
+    await Foreign_language.deleteOne({ _id: id_tt });
+  }
+  res.redirect('/all-list');
+}
+
 module.exports = {
   index,
   add,
   translate,
   allList,
+  delete_list,
   api_find_word,
 }

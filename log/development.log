@@ -781,3 +781,45 @@
 {"message":"Sun Oct 16 2022 18:09:16 GMT+0700 (Indochina Time): GET /","level":"info"}
 {"message":"find_word","level":"info"}
 {"message":"Sun Oct 16 2022 18:09:19 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:29:23 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:29:34 GMT+0700 (Indochina Time): GET /delete?id=634bdd60d4dd186aa4eff6f7","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Sun Oct 16 2022 18:31:37 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:31:39 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:31:41 GMT+0700 (Indochina Time): GET /delete?id=634bdd60d4dd186aa4eff6f7","level":"info"}
+{"message":"Sun Oct 16 2022 18:31:42 GMT+0700 (Indochina Time): GET /allList","level":"info"}
+{"message":"Sun Oct 16 2022 18:31:50 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:32:12 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:32:14 GMT+0700 (Indochina Time): GET /delete?id=634bdd60d4dd186aa4eff6f7","level":"info"}
+{"message":"Sun Oct 16 2022 18:32:14 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:33:52 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:34:24 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:35:08 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:35:10 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:35:45 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Sun Oct 16 2022 18:35:48 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:35:50 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:14 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:16 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:33 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:35 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:42 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:43 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Sun Oct 16 2022 18:36:43 GMT+0700 (Indochina Time): GET /all-list","level":"info"}

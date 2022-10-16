@@ -12,6 +12,7 @@ module.exports = (app) => {
   app.route('/').get(root_controller.translate)
   app.route('/all-list').get(root_controller.allList)
   app.route('/find').get(root_controller.api_find_word)
+  app.route('/delete').post(root_controller.delete_list)
   // post method
   app.route('/save').post(root_controller.add)
 }
