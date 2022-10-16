@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+    .container h1{
+        font-size: 3rem;
+        color: #333;
+    }
+    .form-group{
+        width: 800px;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+    .form-control {
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+        padding: 0.5rem;
+        font-size: 18px;
+        outline: none;
+        height: 100px;
+        /* textarea resize only height */
+        resize: vertical;
+    }
+    .btn{
+        padding: 0.5rem 1rem;
+        font-size: 18px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn-primary{
+        background-color: rgb(51, 51, 51);
+        color: #fff;
+    }
+</style>
+
+<body>
+    <a href="/">Trang chủ</a>
+    <form class="container" method="post" action="./save">
+        <h1>
+            Add dictionary translate
+        </h1>
+        <!-- <div class="form-group">
+            <button type="button" id="translate" class="btn btn-primary">Vietnamese <=> English</button>
+        </div> -->
+        <div class="form-group">
+            <input type="hidden" name="type" value="1">
+            <textarea type="text" id="text" name="text1" class="form-control" placeholder="Tiếng việt"></textarea>
+            <=>
+            <textarea type="text" id="" name="text2" class="form-control" placeholder="Tiếng Nước ngoài"></textarea>
+        </div>
+        <div class="form-group">
+            <button id="translate" class="btn btn-primary">Translate</button>
+        </div>
+    </form>
+</body>
+</html>
