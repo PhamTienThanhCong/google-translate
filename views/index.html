@@ -37,9 +37,6 @@
         /* textarea resize only height */
         resize: vertical;
     }
-    .form-control2{
-        width: 30%;
-    }
     .btn{
         padding: 0.5rem 1rem;
         font-size: 18px;
@@ -56,9 +53,6 @@
 </style>
 
 <body>
-    <a href="/create">Tạo từ điển</a>
-    <br>
-    <a href="/all-list">Danh sách từ điển</a>
     <form class="container" method="get" id="form_submit">
         <h1>
             Google translate example
@@ -70,12 +64,8 @@
             <input type="hidden" value="1" id="type_trans">
             <textarea type="text" id="" name="text1" class="form-control"></textarea>
             <=>
-            <textarea type="text" id="" name="text2" class="form-control form-control2" readonly></textarea>
-            <ul id="list-same" type="none">
-
-            </ul>
+            <textarea type="text" id="" name="text2" class="form-control"></textarea>
         </div>
-        <p id="description"></p>
         <div class="form-group">
             <button id="translate" class="btn btn-primary">Translate</button>
         </div>
@@ -103,26 +93,13 @@
         $.ajax({
             type: "GET",
             url: "/find",
-            dataType: "json",
+            dataType: "html",
             data: {
                 type: type,
                 word: text
             },
             success: function(response){
-                if (response.length == 0){
-                    alert("Không tìm thấy từ này, hãy tạo mới ngay!");
-                }else{
-                    document.getElementsByName("text2")[0].value = response[0].word;
-                    document.getElementById("list-same").innerHTML = "<h3>Từ cùng nghĩa</h3>";
-                    for (let i = 1; i < response.length; i++){
-                        document.getElementById("list-same").innerHTML += "<li>" + response[i].word + "</li>";
-                    }
-                    if (response[0].description != null){
-                        document.getElementById("description").innerHTML = "Chú Thích: " + response[0].description;
-                    }else{
-                        document.getElementById("description").innerHTML = "Chú Thích";
-                    }
-                }
+                document.getElementsByName("text2")[0].value = response;
             }
         })
     })

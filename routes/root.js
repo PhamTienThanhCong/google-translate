@@ -10,8 +10,8 @@ module.exports = (app) => {
   app.route('/list_trs').get(translate_controller.list)
   app.route('/create').get(root_controller.index)
   app.route('/').get(root_controller.translate)
+  app.route('/all-list').get(root_controller.allList)
   app.route('/find').get(root_controller.api_find_word)
   // post method
   app.route('/save').post(root_controller.add)
-  app.route('/test').get(root_controller.test)
 }
