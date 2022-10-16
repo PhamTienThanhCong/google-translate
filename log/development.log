@@ -768,3 +768,16 @@
 {"message":"Sun Oct 16 2022 18:07:54 GMT+0700 (Indochina Time): GET /","level":"info"}
 {"message":"find_word","level":"info"}
 {"message":"Sun Oct 16 2022 18:07:55 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Sun Oct 16 2022 18:08:34 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:08:48 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Sun Oct 16 2022 18:08:50 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Sun Oct 16 2022 18:08:55 GMT+0700 (Indochina Time): GET /find?type=2&word=her","level":"info"}
+{"message":"Sun Oct 16 2022 18:09:03 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"Sun Oct 16 2022 18:09:08 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Sun Oct 16 2022 18:09:16 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Sun Oct 16 2022 18:09:19 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i","level":"info"}
