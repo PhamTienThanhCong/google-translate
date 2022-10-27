@@ -1,28 +1,14 @@
 const logger = require('../utils/logger');
+const my_function = require('./function');
 const Vietnamese = require('../models/vietnam');
 const Foreign_language = require('../models/foreign_language');
 const Translate = require('../models/translate');
-// write function return all data from Vietnamese using async/await
-const list = async (language) => {
-  try {
-    const data = await language.find();
-    return data;
-  } catch (error) {
-    logger.error(error);
-  }
-};
-
-// find element in Vietnamese by _id and return word
-const find_word = async (id, language) => {
-  try {
-    const data = await language.findById(id);
-    return data;
-  } catch (error) {
-    logger.error(error);
-  }
-};
+const { exists } = require('../models/vietnam');
 
 const index = (req, res) => {
+  if (!req.session.daDangNhap){
+    res.redirect('/login');
+  }
   // render the index page
   logger.info('index');
   res.render('index', { title: 'Express' });
@@ -34,10 +20,13 @@ const translate = (req, res) => {
 }
 
 const allList = async (req, res) => {
+  if (!req.session.daDangNhap){
+    res.redirect('/login');
+  }
   // get all data from Vietnamese and Foreign_language
-  const data = await list(Vietnamese);
-  const data2 = await list(Foreign_language);
-  const data3 = await list(Translate);
+  const data = await my_function.list(Vietnamese);
+  const data2 = await my_function.list(Foreign_language);
+  const data3 = await my_function.list(Translate);
 
   let dictionary = [];
 
@@ -68,25 +57,6 @@ const allList = async (req, res) => {
   res.render('allList', { title: 'Express', dictionary });
 }
 
-// find element in Translate by id_tv and return list id_tt
-const find_translates = async (type, value, language) => {
-  try {
-    const data = await language.find({id_tv: value});
-    return data;
-  } catch (error) {
-    logger.error(error);
-  }
-}
-
-const find_translates2 = async (type, value, language) => {
-  try {
-    const data = await language.find({id_tt: value});
-    return data;
-  } catch (error) {
-    logger.error(error);
-  }
-}
-
 // write function api_find_word(req, res) 
 const api_find_word = async (req, res) => {
   let { type, word } = req.query;
@@ -105,19 +75,19 @@ const api_find_word = async (req, res) => {
   // trim text and lower case and remove special characters
   word = word.trim().toLowerCase().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
   // find word in Vietnamese 
-  const data = await list(type_API);
-  id = checkExist(word, data);
+  const data = await my_function.list(type_API);
+  id = my_function.checkExist(word, data);
   
   // let data_translate = await list(Translate);
   let id2 = [];
   if (type == "1") {
-    id2 = await find_translates(1, id, Translate);
+    id2 = await my_function.find_translates(1, id, Translate);
   }else if (type == "2") {
-    id2 = await find_translates2(2, id, Translate);
+    id2 = await my_function.find_translates2(2, id, Translate);
   }
 
   let list_anouce = [];
-  let list_word = await list(type_API2);
+  let list_word = await my_function.list(type_API2);
   for (let i = 0; i < id2.length; i++) {
     for (let j = 0; j < list_word.length; j++) {
       if (id2[i][type_id2] == list_word[j]._id) {
@@ -129,19 +99,11 @@ const api_find_word = async (req, res) => {
   res.send(list_anouce);
 }
 
-// check if word exist in list if exist return list._id else return null using map 
-const checkExist = (word, list) => {
-  let id = "";
-  list.map( (item) => {
-    if (item.word === word) {
-      id = item._id;        
-    }
-  });
-  return id;
-}
-
 // add new value to Vietnamese and Foreign_language 
 const add = async (req, res) => {
+  if (!req.session.daDangNhap){
+    res.redirect('/login');
+  }
   // get the data from the request
   let { type, text1, text2, description } = req.body;
   if (type === 2){
@@ -163,8 +125,12 @@ const add = async (req, res) => {
 }
 
 const addList = async (text1, text2, description) => {
-  let id_tv = checkExist(text1, await list(Vietnamese));
-  let id_tt = checkExist(text2, await list(Foreign_language));
+  if (!req.session.daDangNhap){
+    res.redirect('/login');
+  }
+
+  let id_tv = my_function.checkExist(text1, await my_function.list(Vietnamese));
+  let id_tt = my_function.checkExist(text2, await my_function.list(Foreign_language));
   
   if (id_tv === "" || id_tt === "") {
     // create a new document
@@ -192,34 +158,20 @@ const addList = async (text1, text2, description) => {
 
 }
 
-  // count number of id_tv and id_tt in Translate
-  const count = async (value) => {
-    try {
-      const data = await Translate.find({id_tv: value});
-      return data.length;
-    } catch (error) {
-      logger.error(error);
-    }
-  }
-  const count2 = async (value) => {
-    try {
-      const data = await Translate.find({id_tt: value});
-      return data.length;
-    } catch (error) {
-      logger.error(error);
-    }
+const delete_list = async (req, res) => {
+  if (!req.session.daDangNhap){
+    res.redirect('/login');
   }
 
-const delete_list = async (req, res) => {
   let { id } = req.body;
-  let word = find_word(id, Translate);
+  let word = my_function.find_word(id, Translate);
   let id_tv = word.id_tv;
   let id_tt = word.id_tt;
   await Translate.deleteOne({ _id: id });
 
   // count number of id_tv and id_tt in Translate
-  let count_tv = await count(id_tv, Translate);
-  let count_tt = await count2(id_tt, Translate);
+  let count_tv = await my_function.count(id_tv, Translate);
+  let count_tt = await my_function.count2(id_tt, Translate);
 
   if (count_tv === 0) {
     await Vietnamese.deleteOne({ _id: id_tv });

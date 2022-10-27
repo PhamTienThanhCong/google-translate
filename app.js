@@ -1,4 +1,5 @@
 const express = require('express');
+var session = require('express-session');
 const hbs = require('hbs');
 const path = require('path');
 const fs = require('fs');
@@ -16,6 +17,13 @@ app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 
 app.use(express.static(__dirname + '/public')); // public
+
+app.use(session({
+  secret: 'abcdefg',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 60000 }
+}));
 
 hbs.registerHelper('getCurrentYear', () => { //ViewHelper
   return new Date().getFullYear();
