@@ -4,41 +4,198 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin quản lý từ điển</title>
 </head>
 <style>
-    .form-control{
-        display: block;
-        width: 400px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
-    .form-control input{
+    .container{
         width: 100%;
-        font-size: 16px;
-        padding: 10px 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        padding: 0 50px;
+        margin-top: 30px;
+    }
+    .content{
+        width: 100%;
+        display: flex;
+    }
+    .nav-slider{
+        width: 35%;
+        background-color: #f1f1f1;
+    }
+    .nav-slider ul{
+        list-style: none;
+        padding: 0 10px;
+        height: calc(100vh - 200px);
+        overflow: scroll;
+    }
+    .nav-slider ul li{
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    .nav-slider ul li a{
+        /* tag a to p */
+        text-decoration: none;
+        color: black;
+    }
+    .main-content{
+        width: 65%;
+        background-color: #e9e9e9;
+    }
+    .search-form{
+        width: 100%;
         margin-bottom: 10px;
     }
-    .form-control button{
-        width: calc(100% + 20px);
-        font-size: 16px;
-        padding: 10px 10px;
+    .search-form input{
+        width: 60%;
+        padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        margin-bottom: 10px;
+    }
+    .btn{
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
         background-color: #ccc;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .btn-type{
+        padding: 5px 10px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    .main-header{
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    .main-header a{
+        text-decoration: none;
+        color: black;
+    }
+    .main-content{
+        padding: 10px;
+        height: calc(100vh - 200px);
+        overflow: scroll;
+    }
+    .list-diction{
+        list-style: none;
+        padding-left: 40px;
+    }
+    .list-diction li{
+        font-size: 17px;
+        /* margin-bottom: 10px; */
+        padding: 10px 0;
+        border-bottom: 1px dotted rgb(95, 90, 90);
     }
 </style>
 <body>
-    <h1 style="text-align: center;">Admin</h1>
-    <form action="/login_activity" method="POST" class="form-control">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button type="submit">Đăng nhập</button>
-        <a href="/">Quay lại trang tra cứu</a>
-    </form>
+    <h1 style="text-align: center; margin-top: 10px;">Trang quản lý từ ngữ dành riêng cho người quản lý</h1>
+    <div class="container">
+        <div class="header-search">
+            <form action="/search" class="search-form" method="GET">
+                <input type="text" name="keyword" placeholder="Nhập từ cần tìm kiếm">
+                <button class="btn" type="submit">Tìm kiếm</button>
+                <a href="/create"><button class="btn" type="button">Thêm từ</button></a>
+            </form>
+        </div>
+        <div class="content">
+            <div class="nav-slider">
+                <ul>
+                    <li><a href="/admin">Tất cả</a></li>
+                    <li><a href="/admin?category=1">Nghĩa</a></li>
+                    <li><a href="/admin?category=2">Cách dùng</a></li>
+                    <li><a href="/admin?category=3">Ví dụ</a></li>
+                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
+                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
+                    <li><a href="/admin">Tất cả</a></li>
+                    <li><a href="/admin?category=1">Nghĩa</a></li>
+                    <li><a href="/admin?category=2">Cách dùng</a></li>
+                    <li><a href="/admin?category=3">Ví dụ</a></li>
+                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
+                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
+                    <li><a href="/admin">Tất cả</a></li>
+                    <li><a href="/admin?category=1">Nghĩa</a></li>
+                    <li><a href="/admin?category=2">Cách dùng</a></li>
+                    <li><a href="/admin?category=3">Ví dụ</a></li>
+                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
+                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
+                    <li><a href="/admin">Tất cả</a></li>
+                    <li><a href="/admin?category=1">Nghĩa</a></li>
+                    <li><a href="/admin?category=2">Cách dùng</a></li>
+                    <li><a href="/admin?category=3">Ví dụ</a></li>
+                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
+                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="main-header">
+                    <a href="#">
+                        <button class="btn-type">Việt - Anh</button>
+                    </a>
+                    <a href="#">
+                        <button class="btn-type">Việt - Hàn</button>
+                    </a>
+                </div>
+                <b style="color: red; font-size: 19px;">Từ: Yêu em</b>
+                <ul class="list-diction">
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                    <li>
+                        <b>Nghĩa:</b> 
+                        <br>
+                        <span>- Giải thích: I love you</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
