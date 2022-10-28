@@ -413,3 +413,80 @@
 {"message":"login","level":"info"}
 {"message":"Fri Oct 28 2022 13:30:01 GMT+0700 (Indochina Time): POST /login_activity","level":"info"}
 {"message":"Fri Oct 28 2022 13:30:01 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Fri Oct 28 2022 13:32:50 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:32:50 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:32:53 GMT+0700 (Indochina Time): POST /login_activity","level":"info"}
+{"message":"Fri Oct 28 2022 13:32:53 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:32:55 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:12 GMT+0700 (Indochina Time): POST /save","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:12 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:42 GMT+0700 (Indochina Time): POST /save","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:42 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:45 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:47 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:48 GMT+0700 (Indochina Time): GET /logout","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:48 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:51 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:51 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:33:53 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:05 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:08 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:08 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:11 GMT+0700 (Indochina Time): POST /login_activity","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:11 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:14 GMT+0700 (Indochina Time): GET /logout","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:14 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:16 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:16 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:19 GMT+0700 (Indochina Time): POST /login_activity","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:19 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:26 GMT+0700 (Indochina Time): GET /all-list?keyword=xin+ch%C3%A0o","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:29 GMT+0700 (Indochina Time): GET /all-list?keyword=xin+ch%C3%A0o","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:31 GMT+0700 (Indochina Time): GET /all-list?keyword=","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:33 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:34 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i%20y%C3%AAu%20em","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:35 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:39 GMT+0700 (Indochina Time): GET /find?type=1&word=con%20v%E1%BB%8Bt","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:39 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:34:43 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:03 GMT+0700 (Indochina Time): POST /save","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:03 GMT+0700 (Indochina Time): GET /create","level":"info"}
+{"message":"index","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:05 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:07 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:10 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:12 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:12 GMT+0700 (Indochina Time): GET /find?type=1&word=con%20v%E1%BB%8Bt","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:13 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:16 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:17 GMT+0700 (Indochina Time): GET /find?type=1&word=con%20v%E1%BB%8Bt","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:20 GMT+0700 (Indochina Time): GET /favicon.ico","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:21 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:23 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i%20y%C3%AAu%20em","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:25 GMT+0700 (Indochina Time): GET /find?type=1&word=con%20v%E1%BB%8Bt","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:26 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:29 GMT+0700 (Indochina Time): GET /all-list?keyword=","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:29 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:37 GMT+0700 (Indochina Time): POST /login_activity","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:37 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:39 GMT+0700 (Indochina Time): GET /find?type=1&word=con%20v%E1%BB%8Bt","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:40 GMT+0700 (Indochina Time): POST /delete","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:42 GMT+0700 (Indochina Time): GET /all-list","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:43 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i%20y%C3%AAu%20em","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:44 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
+{"message":"Fri Oct 28 2022 13:35:45 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
