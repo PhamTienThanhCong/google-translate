@@ -28,7 +28,14 @@ function login_activity(req, res) {
     });
 }
 
+// logout remove session
+function logout(req, res) {
+    req.session.destroy();
+    res.redirect('/login');
+}
+
 module.exports = {
     login,
+    logout,
     login_activity
 }

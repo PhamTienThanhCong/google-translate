@@ -51,7 +51,7 @@ const checkExist = (word, list) => {
 }
 
 // count number of id_tv and id_tt in Translate
-const count = async (value) => {
+const count = async (value, Translate) => {
     try {
         const data = await Translate.find({ id_tv: value });
         return data.length;
@@ -59,7 +59,7 @@ const count = async (value) => {
         logger.error(error);
     }
 }
-const count2 = async (value) => {
+const count2 = async (value, Translate) => {
     try {
         const data = await Translate.find({ id_tt: value });
         return data.length;

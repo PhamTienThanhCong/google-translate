@@ -3,16 +3,16 @@ const my_function = require('./function');
 const Vietnamese = require('../models/vietnam');
 const Foreign_language = require('../models/foreign_language');
 const Translate = require('../models/translate');
-const { exists } = require('../models/vietnam');
 
 const index = (req, res) => {
   if (!req.session.daDangNhap){
-    res.redirect('/login');
+    return res.redirect('/login');
   }
   // render the index page
   logger.info('index');
   res.render('index', { title: 'Express' });
 }
+
 const translate = (req, res) => {
   // render the index page
   logger.info('find_word');
@@ -21,40 +21,24 @@ const translate = (req, res) => {
 
 const allList = async (req, res) => {
   if (!req.session.daDangNhap){
-    res.redirect('/login');
+    return res.redirect('/login');
+  }
+  let {keyword} = req.query;
+  if (keyword == undefined){
+    keyword = "";
+  }
+  // search in Vietnamese from word 
+  let data_raw = await my_function.list(Vietnamese);
+  let data = [];
+  console.log(keyword);
+  for (let i = 0; i < data_raw.length; i++) {
+    if (data_raw[i].word.includes(keyword)){
+      data.push(data_raw[i]);
+    }
   }
   // get all data from Vietnamese and Foreign_language
-  const data = await my_function.list(Vietnamese);
-  const data2 = await my_function.list(Foreign_language);
-  const data3 = await my_function.list(Translate);
 
-  let dictionary = [];
-
-  let word1, word2, description, id;
-  for (let i = 0; i < data3.length; i++) {
-    id = data3[i]['_id'];
-    
-    for (let j = 0; j < data.length; j++) {
-      if (data3[i]['id_tv'] == data[j]['_id']) {
-        word1 = data[j]['word'];
-      }
-    }
-    for (let j = 0; j < data2.length; j++) {
-      if (data3[i]['id_tt'] == data2[j]['_id']) {
-        word2 = data2[j]['word'];
-        description = data2[j]['description'];
-      }
-    }
-
-    dictionary.push({
-      "id": id,
-      "tv": word1,
-      "tt": word2,
-      "description": description
-    });
-  }
-  // render the page and send data to the page
-  res.render('allList', { title: 'Express', dictionary });
+  res.render('allList', { title: 'Express', data , keyword});
 }
 
 // write function api_find_word(req, res) 
@@ -91,7 +75,13 @@ const api_find_word = async (req, res) => {
   for (let i = 0; i < id2.length; i++) {
     for (let j = 0; j < list_word.length; j++) {
       if (id2[i][type_id2] == list_word[j]._id) {
-        list_anouce.push(list_word[j]);
+        list_anouce.push({
+          id_trans : id2[i]['_id'],
+          _id : list_word[j]['_id'],
+          word : list_word[j]['word'],
+          description : list_word[j]['description']
+        }
+        );
       }
     }
   }
@@ -102,7 +92,7 @@ const api_find_word = async (req, res) => {
 // add new value to Vietnamese and Foreign_language 
 const add = async (req, res) => {
   if (!req.session.daDangNhap){
-    res.redirect('/login');
+    return res.redirect('/login');
   }
   // get the data from the request
   let { type, text1, text2, description } = req.body;
@@ -125,9 +115,6 @@ const add = async (req, res) => {
 }
 
 const addList = async (text1, text2, description) => {
-  if (!req.session.daDangNhap){
-    res.redirect('/login');
-  }
 
   let id_tv = my_function.checkExist(text1, await my_function.list(Vietnamese));
   let id_tt = my_function.checkExist(text2, await my_function.list(Foreign_language));
@@ -160,26 +147,39 @@ const addList = async (text1, text2, description) => {
 
 const delete_list = async (req, res) => {
   if (!req.session.daDangNhap){
-    res.redirect('/login');
+    return res.send({
+      status : false,
+    });
   }
 
   let { id } = req.body;
-  let word = my_function.find_word(id, Translate);
+  let word = await my_function.find_word(id, Translate);
   let id_tv = word.id_tv;
   let id_tt = word.id_tt;
+  
   await Translate.deleteOne({ _id: id });
 
   // count number of id_tv and id_tt in Translate
   let count_tv = await my_function.count(id_tv, Translate);
   let count_tt = await my_function.count2(id_tt, Translate);
 
-  if (count_tv === 0) {
+  console.log(count_tv, count_tt);
+
+  let tv_delete = false;
+
+  if (count_tv == 0) {
     await Vietnamese.deleteOne({ _id: id_tv });
+    tv_delete = true;
   }
-  if (count_tt === 0) {
+  if (count_tt == 0) {
     await Foreign_language.deleteOne({ _id: id_tt });
   }
-  res.redirect('/all-list');
+  return res.send({
+    status : true,
+    id_trans: id,
+    tv_delete: tv_delete,
+    id_tv: id_tv
+  });
 }
 
 module.exports = {

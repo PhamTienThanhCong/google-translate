@@ -10,6 +10,7 @@ module.exports = (app) => {
   // post method
   app.route('/save').post(root_controller.add)
 
+  app.route('/logout').get(auth_controller.logout)
   // auth
   app.route('/login').get(auth_controller.login)
   app.route('/login_activity').post(auth_controller.login_activity)
