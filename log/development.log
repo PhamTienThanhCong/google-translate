@@ -490,3 +490,16 @@
 {"message":"Fri Oct 28 2022 13:35:43 GMT+0700 (Indochina Time): GET /find?type=1&word=t%C3%B4i%20y%C3%AAu%20em","level":"info"}
 {"message":"Fri Oct 28 2022 13:35:44 GMT+0700 (Indochina Time): GET /find?type=1&word=qu%E1%BA%A3n%20tr%E1%BB%8B%20vi%C3%AAn","level":"info"}
 {"message":"Fri Oct 28 2022 13:35:45 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Tue Nov 01 2022 22:02:31 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Tue Nov 01 2022 22:02:31 GMT+0700 (Indochina Time): GET /favicon.ico","level":"info"}
+{"message":"Tue Nov 01 2022 22:02:49 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Tue Nov 01 2022 22:03:09 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
+{"message":"Tue Nov 01 2022 22:04:58 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Tue Nov 01 2022 22:05:09 GMT+0700 (Indochina Time): GET /find?type=1&word=Xin%20ch%C3%A0o","level":"info"}

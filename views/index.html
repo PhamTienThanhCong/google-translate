@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin quản lý từ điển</title>
+    <title>Document</title>
 </head>
+
 <style>
     *{
         padding: 0;
@@ -13,150 +14,156 @@
         box-sizing: border-box;
     }
     .container{
-        width: 100%;
-        padding: 0 50px;
-        margin-top: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        /* height: 100vh; */
     }
-    .content{
+    .container h1{
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+    .form-group{
         width: 100%;
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1rem 0;
     }
-    .nav-slider{
-        width: 35%;
-        background-color: #f1f1f1;
+    .form-group-2{
+        justify-content: center;
     }
-    .nav-slider ul{
-        list-style: none;
-        padding: 0 10px;
-        height: calc(100vh - 200px);
-        overflow: scroll;
+    .form-control {
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+        padding: 0.5rem;
+        font-size: 18px;
+        outline: none;
+        height: 100px;
+        /* textarea resize only height */
+        resize: vertical;
     }
-    .nav-slider ul li{
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
+    .form-control-2{
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+        padding: 0;
+        height: 100px;
     }
-    .nav-slider ul li a{
-        /* tag a to p */
-        text-decoration: none;
-        color: black;
-    }
-    .main-content{
-        width: 65%;
-        background-color: #e9e9e9;
-    }
-    .search-form{
+    .form-control-2 textarea{
         width: 100%;
-        margin-bottom: 10px;
-    }
-    .search-form input{
-        width: 60%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        margin: 0;
+        padding: 0.5rem;
     }
     .btn{
-        padding: 10px;
-        border: 1px solid #ccc;
+        padding: 0.5rem 1rem;
+        font-size: 18px;
+        background-color: #333;
+        color: #fff;
+        border: none;
         border-radius: 5px;
-        background-color: #ccc;
-        cursor: pointer;
-        margin-left: 10px;
-    }
-    .btn-type{
-        padding: 5px 10px;
-        margin-right: 5px;
         cursor: pointer;
     }
-    .main-header{
-        width: 100%;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ccc;
-        margin-bottom: 10px;
+    .btn-primary{
+        background-color: rgb(51, 51, 51);
+        color: #fff;
     }
-    .main-header a{
-        text-decoration: none;
-        color: black;
+    #description{
+        margin-top: 20px;
+        font-size: 19px;
     }
-    .main-content{
-        padding: 10px;
-        height: calc(100vh - 200px);
-        overflow: scroll;
+    #description b{
+        color: rgb(133, 37, 37);
     }
-    .list-diction{
-        list-style: none;
-        padding-left: 40px;
+    #list-same{
+        margin-top: 15px;
+        font-size: 18px;
     }
-    .list-diction li{
-        font-size: 17px;
-        /* margin-bottom: 10px; */
-        padding: 10px 0;
-        border-bottom: 1px dotted rgb(95, 90, 90);
+    #list-same li{
+        margin-left: 30px;
     }
 </style>
+
 <body>
-    <h1 style="text-align: center; margin-top: 10px;">Trang quản lý từ ngữ dành riêng cho người quản lý</h1>
-    <div class="container">
-        <div class="header-search">
-            <form action="/search" class="search-form" method="GET">
-                <input type="text" name="keyword" placeholder="Nhập từ cần tìm kiếm">
-                <button class="btn" type="submit">Tìm kiếm</button>
-                <a href="/create"><button class="btn" type="button">Thêm từ</button></a>
-            </form>
+    <a href="/all-list">Trang dành cho quản trị</a>
+    <form class="container" method="get" id="form_submit">
+        <h1>
+            Tra cứu từ điển
+        </h1>
+        <div class="form-group form-group-2">
+            <button type="button" onclick="change_langue()" id="translate" class="btn btn-primary">Tiếng Việt <=> Ngoại Ngữ</button>
         </div>
-        <div class="content">
-            <div class="nav-slider">
-                <ul>
-                    <li><a href="/admin">Tất cả</a></li>
-                    <li><a href="/admin?category=1">Nghĩa</a></li>
-                    <li><a href="/admin?category=2">Cách dùng</a></li>
-                    <li><a href="/admin?category=3">Ví dụ</a></li>
-                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
-                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
-                    <li><a href="/admin">Tất cả</a></li>
-                    <li><a href="/admin?category=1">Nghĩa</a></li>
-                    <li><a href="/admin?category=2">Cách dùng</a></li>
-                    <li><a href="/admin?category=3">Ví dụ</a></li>
-                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
-                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
-                    <li><a href="/admin">Tất cả</a></li>
-                    <li><a href="/admin?category=1">Nghĩa</a></li>
-                    <li><a href="/admin?category=2">Cách dùng</a></li>
-                    <li><a href="/admin?category=3">Ví dụ</a></li>
-                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
-                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
-                    <li><a href="/admin">Tất cả</a></li>
-                    <li><a href="/admin?category=1">Nghĩa</a></li>
-                    <li><a href="/admin?category=2">Cách dùng</a></li>
-                    <li><a href="/admin?category=3">Ví dụ</a></li>
-                    <li><a href="/admin?category=4">Từ đồng nghĩa</a></li>
-                    <li><a href="/admin?category=5">Từ trái nghĩa</a></li>
-                </ul>
-            </div>
-            <div class="main-content">
-                <div class="main-header">
-                    <a href="#">
-                        <button class="btn-type">Việt - Anh</button>
-                    </a>
-                    <a href="#">
-                        <button class="btn-type">Việt - Hàn</button>
-                    </a>
-                </div>
-                <b style="color: red; font-size: 19px;">Từ: Yêu em</b>
-                <ul class="list-diction">
-                    <li>
-                        <p>
-                            <b>Nghĩa:</b> 
-                            <br>
-                            <span>- Giải thích: I love you</span>
-                            <br>
-                            Hành động: <a href="#">Xóa từ điển</a>
-                        </p>
-                        
-                    </li>
+        <div class="form-group">
+            <input type="hidden" value="1" id="type_trans">
+            <textarea type="text" id="" name="text1" class="form-control"></textarea>
+            <label for=""><=></label>
+            <div class="form-control-2">
+                <textarea type="text" id="" name="text2" class="form-control" readonly>Từ gì đó ở đây</textarea>
                 
-                </ul>
+                <p id="description">
+                </p>
+
+                <ol id="list-same" type="none">
+                </ol>
             </div>
         </div>
-    </div>
+        <div class="form-group form-group-2">
+            <button id="translate" class="btn btn-primary">Tra Cứu</button>
+        </div>
+        <div class="form-group form-group-2">
+            <p style="font-size: 19px; padding: 0px 80px">
+                <b>Chú ý:</b> Nếu bạn muốn tra cứu từ điển tiếng Việt - Ngoại ngữ, bạn hãy nhập từ tiếng Việt vào ô trên cùng, sau đó nhấn nút "Tiếng Việt <=> Ngoại Ngữ" để chuyển sang chế độ tra cứu từ điển tiếng Việt - Ngoại ngữ.
+            </p>
+        </div>
+    </form>
 </body>
+<!-- jquery import -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function change_langue(){
+        let type = "Ngoại Ngữ <=> Tiếng Việt";
+        let type_trans = document.getElementById("type_trans");
+        if (type_trans.value == 1){
+            type_trans.value = 2;
+        }else{
+            type_trans.value = 1;
+            type = "Tiếng Việt <=> Ngoại Ngữ";
+        }
+        document.getElementById("translate").innerHTML = type;
+    }
+    document.getElementById("form_submit").addEventListener("submit", function(e){
+        e.preventDefault();
+        let text = document.getElementsByName("text1")[0].value;
+        let type  = document.getElementById("type_trans").value;
+
+        $.ajax({
+            type: "GET",
+            url: "/find",
+            dataType: "json",
+            data: {
+                type: type,
+                word: text
+            },
+            success: function(response){
+                if (response.length == 0){
+                    alert("Không tìm thấy từ này, hãy tạo mới ngay!");
+                }else{
+                    document.getElementsByName("text2")[0].value = response[0].word;
+                    document.getElementById("list-same").innerHTML = "<h3>Từ cùng nghĩa</h3>";
+                    for (let i = 1; i < response.length; i++){
+                        document.getElementById("list-same").innerHTML += "<li>" + response[i].word + "</li>";
+                    }
+                    if (response[0].description != null){
+                        document.getElementById("description").innerHTML = "Chú Thích: " + response[0].description;
+                    }else{
+                        document.getElementById("description").innerHTML = "Chú Thích";
+                    }
+                }
+            }
+        })
+    })
+</script>
 </html>

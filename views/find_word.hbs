@@ -8,23 +8,32 @@
 </head>
 
 <style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
+        margin-top: 50px;
+        /* height: 100vh; */
     }
     .container h1{
         font-size: 3rem;
         color: #333;
+        margin-bottom: 30px;
     }
     .form-group{
-        width: 800px;
+        width: 100%;
         display: flex;
-        /* flex-direction: column; */
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         margin: 1rem 0;
+    }
+    .form-group-2{
+        justify-content: center;
     }
     .form-control {
         width: 40%;
@@ -37,8 +46,17 @@
         /* textarea resize only height */
         resize: vertical;
     }
-    .form-control2{
-        width: 30%;
+    .form-control-2{
+        width: 40%;
+        margin: 0 auto;
+        display: block;
+        padding: 0;
+        height: 100px;
+    }
+    .form-control-2 textarea{
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem;
     }
     .btn{
         padding: 0.5rem 1rem;
@@ -53,29 +71,49 @@
         background-color: rgb(51, 51, 51);
         color: #fff;
     }
+    #description{
+        margin-top: 20px;
+        font-size: 19px;
+    }
+    #description b{
+        color: rgb(133, 37, 37);
+    }
+    #list-same{
+        margin-top: 15px;
+        font-size: 18px;
+    }
+    #list-same li{
+        margin-top: 5px;
+        margin-left: 30px;
+    }
 </style>
 
 <body>
     <a href="/all-list">Trang dành cho quản trị</a>
     <form class="container" method="get" id="form_submit">
         <h1>
-            Google translate example
+            Tra cứu từ điển
         </h1>
-        <div class="form-group">
-            <button type="button" onclick="change_langue()" id="translate" class="btn btn-primary">Vietnamese <=> English</button>
+        <div class="form-group form-group-2">
+            <button type="button" onclick="change_langue()" id="translate" class="btn btn-primary">Tiếng Việt <=> Ngoại Ngữ</button>
         </div>
         <div class="form-group">
             <input type="hidden" value="1" id="type_trans">
-            <textarea type="text" id="" name="text1" class="form-control"></textarea>
-            <=>
-            <textarea type="text" id="" name="text2" class="form-control form-control2" readonly></textarea>
-            <ul id="list-same" type="none">
+            <textarea type="text" id="" name="text1" class="form-control" placeholder="Từ gì đó ở đây !!!"></textarea>
+            <label for=""><=></label>
+            <div class="form-control-2">
+                <textarea type="text" id="" name="text2" class="form-control" readonly></textarea>
+                
+                <p id="description">
+                    <b>Chú ý:</b> Nếu bạn muốn tra cứu từ điển tiếng Việt - Ngoại ngữ, bạn hãy nhập từ tiếng Việt vào ô trên cùng, sau đó nhấn nút "Tiếng Việt <=> Ngoại Ngữ" để chuyển sang chế độ tra cứu từ điển tiếng Việt - Ngoại ngữ.
+                </p>
 
-            </ul>
+                <ol id="list-same" type="none">
+                </ol>
+            </div>
         </div>
-        <p id="description"></p>
-        <div class="form-group">
-            <button id="translate" class="btn btn-primary">Translate</button>
+        <div class="form-group form-group-2">
+            <button id="translate" class="btn btn-primary">Tra Cứu</button>
         </div>
     </form>
 </body>
@@ -83,13 +121,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     function change_langue(){
-        let type = "English <=> Vietnamese";
+        let type = "Ngoại Ngữ <=> Tiếng Việt";
         let type_trans = document.getElementById("type_trans");
         if (type_trans.value == 1){
             type_trans.value = 2;
         }else{
             type_trans.value = 1;
-            type = "Vietnamese <=> English";
+            type = "Tiếng Việt <=> Ngoại Ngữ";
         }
         document.getElementById("translate").innerHTML = type;
     }
