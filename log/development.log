@@ -503,3 +503,5 @@
 {"message":"Tue Nov 01 2022 22:04:58 GMT+0700 (Indochina Time): GET /","level":"info"}
 {"message":"find_word","level":"info"}
 {"message":"Tue Nov 01 2022 22:05:09 GMT+0700 (Indochina Time): GET /find?type=1&word=Xin%20ch%C3%A0o","level":"info"}
+{"message":"API is now running on port 3000 in development mode","level":"info"}
+{"message":"Successfully connected to mongodb://localhost:27017 MongoDB cluster in development mode.","level":"info"}
