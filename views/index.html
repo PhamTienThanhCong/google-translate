@@ -52,6 +52,7 @@
         display: block;
         padding: 0;
         height: 100px;
+        position: relative;
     }
     .form-control-2 textarea{
         width: 100%;
@@ -83,7 +84,22 @@
         font-size: 18px;
     }
     #list-same li{
+        margin-top: 5px;
         margin-left: 30px;
+    }
+    .form-group select{
+        height: auto;
+    }
+    body{
+        padding: 20px;
+    }
+    #list-languge{
+        padding: 0;
+        margin: 0;
+        margin-top: -70px;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 </style>
 
@@ -98,12 +114,22 @@
         </div>
         <div class="form-group">
             <input type="hidden" value="1" id="type_trans">
-            <textarea type="text" id="" name="text1" class="form-control"></textarea>
+            <textarea type="text" id="" name="text1" class="form-control" placeholder="Từ gì đó ở đây !!!"></textarea>
             <label for=""><=></label>
             <div class="form-control-2">
-                <textarea type="text" id="" name="text2" class="form-control" readonly>Từ gì đó ở đây</textarea>
+
+                <div class="form-group"  id="list-languge">
+                    <select class="form-control" name="language">
+                        {{#each languages}}
+                            <option value="{{this.id}}">Tiếng {{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <textarea type="text" id="" name="text2" class="form-control" readonly></textarea>
                 
                 <p id="description">
+                    <b>Chú ý:</b> Nếu bạn muốn tra cứu từ điển tiếng Việt - Ngoại ngữ, bạn hãy nhập từ tiếng Việt vào ô trên cùng, sau đó nhấn nút "Tiếng Việt <=> Ngoại Ngữ" để chuyển sang chế độ tra cứu từ điển tiếng Việt - Ngoại ngữ.
                 </p>
 
                 <ol id="list-same" type="none">
@@ -113,16 +139,12 @@
         <div class="form-group form-group-2">
             <button id="translate" class="btn btn-primary">Tra Cứu</button>
         </div>
-        <div class="form-group form-group-2">
-            <p style="font-size: 19px; padding: 0px 80px">
-                <b>Chú ý:</b> Nếu bạn muốn tra cứu từ điển tiếng Việt - Ngoại ngữ, bạn hãy nhập từ tiếng Việt vào ô trên cùng, sau đó nhấn nút "Tiếng Việt <=> Ngoại Ngữ" để chuyển sang chế độ tra cứu từ điển tiếng Việt - Ngoại ngữ.
-            </p>
-        </div>
     </form>
 </body>
 <!-- jquery import -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+    let language = 0;
     function change_langue(){
         let type = "Ngoại Ngữ <=> Tiếng Việt";
         let type_trans = document.getElementById("type_trans");
@@ -145,7 +167,8 @@
             dataType: "json",
             data: {
                 type: type,
-                word: text
+                word: text,
+                language: 1
             },
             success: function(response){
                 if (response.length == 0){

@@ -22,7 +22,7 @@ app.use(session({
   secret: 'abcdefg',
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 600000 }
 }));
 
 hbs.registerHelper('getCurrentYear', () => { //ViewHelper

@@ -8,15 +8,20 @@
 </head>
 
 <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 100vh;
     }
     .container h1{
         font-size: 3rem;
         color: #333;
+        margin-bottom: 35px;
     }
     .form-group{
         width: 800px;
@@ -50,6 +55,12 @@
         background-color: rgb(51, 51, 51);
         color: #fff;
     }
+    body{
+        padding: 20px;
+    }
+    .form-group select{
+        height: auto;
+    }
 </style>
 
 <body>
@@ -65,12 +76,20 @@
         </div> -->
         <div class="form-group">
             <input type="hidden" name="type" value="1">
-            <textarea type="text" id="text" name="text1" class="form-control" placeholder="Tiếng việt"></textarea>
+            <input type="text" name="text1" class="form-control" style="height: 34px" placeholder="Tiếng việt">
             <=>
-            <textarea type="text" id="" name="text2" class="form-control" placeholder="Tiếng Nước ngoài"></textarea>
+            <input type="text" name="text2" class="form-control" style="height: 34px" placeholder="Tiếng Nước ngoài">
         </div>
         <div class="form-group">
-            <input type="text" name="description" class="form-control" style="height: 34px" placeholder="Mô tả từ tiếng nước ngoài">
+            <select class="form-control" name="language" id="">
+                {{!-- each language --}}
+                {{#each languages}}
+                    <option value="{{this.id}}">Tiếng {{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <textarea type="text" id="" name="description" class="form-control" placeholder="Mô tả ngôn ngữ"></textarea>
         </div>
         <div class="form-group">
             <button id="translate" class="btn btn-primary">Translate</button>

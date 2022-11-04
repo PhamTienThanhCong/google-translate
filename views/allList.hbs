@@ -98,6 +98,10 @@
         padding: 10px 0;
         border-bottom: 1px dotted rgb(95, 90, 90);
     }
+    .active{
+        background-color: rgb(224, 105, 105);
+        border-radius: 3px;
+    }
 </style>
 <body>
     <h1 style="text-align: center; margin-top: 10px;">Trang quản lý từ ngữ dành riêng cho người quản lý</h1>
@@ -119,13 +123,15 @@
                 </ul>
             </div>
             <div class="main-content">
-                <div class="main-header">
+                <div class="main-header">  
                     <a href="#">
-                        <button class="btn-type">Việt - Anh</button>
-                    </a>
-                    <a href="#">
-                        <button class="btn-type">Việt - Hàn</button>
-                    </a>
+                        <button class="btn-type active">Tất Cả<button>
+                    </a>             
+                    {{#each languages}}
+                        <a href="#">
+                            <button class="btn-type">Việt - {{this.name}}<button>
+                        </a>
+                    {{/each}}
                 </div>
                 <b style="color: red; font-size: 19px;" id="id_tv">Quản lý từ vựng</b>
                 <ul class="list-diction"  id="list-diction">
@@ -137,15 +143,40 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     let data;
+    let language = 0;
+    let last_word = "";
+    function change_language(number){
+        language = number;
+    }
+    var btn = document.getElementsByClassName('btn-type')
+    // foreach btn
+    for (let i = 0; i < btn.length ; i++){
+        // btn add Event Listener
+        btn[i].addEventListener('click', function(){
+            // remove class active
+            for (let j = 0; j < btn.length; j++){
+                btn[j].classList.remove('active');
+            }
+            // add class active
+            this.classList.add('active');
+            change_language(i);
+
+            if (last_word != ""){
+                find_world(last_word);
+            }
+        })
+    }
     function find_world(world){
         document.getElementById("id_tv").innerHTML = `Từ: ${world}`;
+        last_word = world;
         $.ajax({
             type: "GET",
             url: "/find",
             dataType: "json",
             data: {
                 type: 1,
-                word: world
+                word: world,
+                language: language
             },
             success: function(response){
                 let root = document.getElementById("list-diction");

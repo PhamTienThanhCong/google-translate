@@ -4,19 +4,31 @@ const Vietnamese = require('../models/vietnam');
 const Foreign_language = require('../models/foreign_language');
 const Translate = require('../models/translate');
 
+// language 
+const getLanguge = () => {
+  const language = [
+    { id: 1, name: 'Anh' },
+    { id: 2, name: 'Trung' },
+    { id: 3, name: 'Pháp' },
+    { id: 4, name: 'Đức' },
+    { id: 5, name: 'Nhật' },
+  ];
+  return language;
+}
+
 const index = (req, res) => {
   if (!req.session.daDangNhap){
     return res.redirect('/login');
   }
   // render the index page
   logger.info('index');
-  res.render('index', { title: 'Express' });
+  res.render('index', { languages: getLanguge() });
 }
 
 const translate = (req, res) => {
   // render the index page
   logger.info('find_word');
-  res.render('find_word', { title: 'Express' });
+  res.render('find_word', { languages: getLanguge() });
 }
 
 const allList = async (req, res) => {
@@ -38,12 +50,12 @@ const allList = async (req, res) => {
   }
   // get all data from Vietnamese and Foreign_language
 
-  res.render('allList', { title: 'Express', data , keyword});
+  res.render('allList', { data , keyword, languages: getLanguge() });
 }
 
 // write function api_find_word(req, res) 
 const api_find_word = async (req, res) => {
-  let { type, word } = req.query;
+  let { type, word, language } = req.query;
   let id = "", type_API,type_API2, type_id, type_id2;
   if (type === "1") {
     type_API = Vietnamese;
@@ -75,13 +87,23 @@ const api_find_word = async (req, res) => {
   for (let i = 0; i < id2.length; i++) {
     for (let j = 0; j < list_word.length; j++) {
       if (id2[i][type_id2] == list_word[j]._id) {
-        list_anouce.push({
-          id_trans : id2[i]['_id'],
-          _id : list_word[j]['_id'],
-          word : list_word[j]['word'],
-          description : list_word[j]['description']
+        if (language != 0 && type == 1){
+          if (list_word[j]['language'] == language){
+            list_anouce.push({
+              id_trans : id2[i]['_id'],
+              _id : list_word[j]['_id'],
+              word : list_word[j]['word'],
+              description : list_word[j]['description']
+            });
+          }
+        }else{
+          list_anouce.push({
+            id_trans : id2[i]['_id'],
+            _id : list_word[j]['_id'],
+            word : list_word[j]['word'],
+            description : list_word[j]['description']
+          }); 
         }
-        );
       }
     }
   }
@@ -95,7 +117,7 @@ const add = async (req, res) => {
     return res.redirect('/login');
   }
   // get the data from the request
-  let { type, text1, text2, description } = req.body;
+  let { type, text1, text2, language, description } = req.body;
   if (type === 2){
     // swap text1 and text2
     const temp = text1;
@@ -108,13 +130,13 @@ const add = async (req, res) => {
   text2 = text2.trim().toLowerCase().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
 
   // add new value to Vietnamese and Foreign_language
-  addList(text1, text2, description);
+  addList(text1, text2, language, description);
 
   // redirect to another page
   res.redirect('/create');
 }
 
-const addList = async (text1, text2, description) => {
+const addList = async (text1, text2, language, description) => {
 
   let id_tv = my_function.checkExist(text1, await my_function.list(Vietnamese));
   let id_tt = my_function.checkExist(text2, await my_function.list(Foreign_language));
@@ -130,7 +152,7 @@ const addList = async (text1, text2, description) => {
 
     // add new value to Foreign_language
     if (id_tt === "") {
-      const foreign_language_document = new Foreign_language({ word: text2, description: description });
+      const foreign_language_document = new Foreign_language({ word: text2, description: description, language: language });
       foreign_language_document.save();
       id_tt = foreign_language_document._id;
     }
