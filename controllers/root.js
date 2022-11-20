@@ -40,7 +40,11 @@ const addLanguage = async (req, res) => {
         description,
     });
     // save new language to database
-    await newLanguage.save();
+    try {
+      await newLanguage.save();
+    } catch (error) {
+      logger.error(error);
+    }
     // redirect to list language page
     return res.redirect('/create-langue');
 }
@@ -48,7 +52,11 @@ const addLanguage = async (req, res) => {
 // delete language
 const deleteLanguage = async (req, res) => {
   const { id } = req.params;
-  await Language.findByIdAndDelete(id);
+  try {
+    await Language.findByIdAndDelete(id);
+  } catch (error) {
+    logger.error(error);
+  }
   return res.redirect('/create-langue');
 }
 
@@ -184,14 +192,22 @@ const addList = async (text1, text2, language, description) => {
     // add new value to Vietnamese
     if (id_tv === "") {
       const vietnamese_document = new Vietnamese({ word: text1 });
-      vietnamese_document.save();
+      try {
+        await vietnamese_document.save();
+      } catch (error) {
+        logger.error(error);
+      }
       id_tv = vietnamese_document._id;
     }  
 
     // add new value to Foreign_language
     if (id_tt === "") {
       const foreign_language_document = new Foreign_language({ word: text2, description: description, language: language });
-      foreign_language_document.save();
+      try {
+        await foreign_language_document.save();
+      } catch (error) {
+        logger.error(error);
+      }
       id_tt = foreign_language_document._id;
     }
 
@@ -200,7 +216,11 @@ const addList = async (text1, text2, language, description) => {
       "id_tv": id_tv, 
       "id_tt": id_tt 
     });
-    translate_document.save();
+    try {
+      await translate_document.save();
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
 }
@@ -217,7 +237,11 @@ const delete_list = async (req, res) => {
   let id_tv = word.id_tv;
   let id_tt = word.id_tt;
   
-  await Translate.deleteOne({ _id: id });
+  try {
+    await Translate.deleteOne({ _id: id });
+  } catch (error) {
+    logger.error(error);
+  }
 
   // count number of id_tv and id_tt in Translate
   let count_tv = await my_function.count(id_tv, Translate);
@@ -228,11 +252,19 @@ const delete_list = async (req, res) => {
   let tv_delete = false;
 
   if (count_tv == 0) {
-    await Vietnamese.deleteOne({ _id: id_tv });
+    try {
+      await Vietnamese.deleteOne({ _id: id_tv });
+    } catch (error) {
+      logger.error(error);
+    }
     tv_delete = true;
   }
   if (count_tt == 0) {
-    await Foreign_language.deleteOne({ _id: id_tt });
+    try {
+      await Foreign_language.deleteOne({ _id: id_tt });
+    } catch (error) {
+      logger.error(error);
+    }
   }
   return res.send({
     status : true,

@@ -3,10 +3,10 @@ var session = require('express-session');
 const hbs = require('hbs');
 const path = require('path');
 const fs = require('fs');
-const config = require('./config/index');
-const logger = require('./utils/logger/index');
+const config = require('../config/index');
+const logger = require('../utils/logger/index');
 const app = express();
-const logger_request_middleware = require('./middlewares/logger_request');
+const logger_request_middleware = require('../middlewares/logger_request');
 const bodyparser = require('body-parser');
 //Setup middleware
 hbs.registerPartials(__dirname + '/views/partials') // partials view
@@ -16,8 +16,7 @@ app.use(logger_request_middleware);
 app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(__dirname + '/public')); // public
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(session({
   secret: 'abcdefg',
@@ -40,9 +39,9 @@ app.listen(config.server.port, (err) => {
     logger.error(err);
     process.exit(1);
   }
-  require('./lib/database');  // connect DB
+  require('../lib/database');  // connect DB
 
-  require('./routes/root')(app);
+  require('../routes/root')(app);
 
   logger.info(
     `API is now running on port ${config.server.port} in ${config.server.environment} mode`
