@@ -3,32 +3,70 @@ const my_function = require('./function');
 const Vietnamese = require('../models/vietnam');
 const Foreign_language = require('../models/foreign_language');
 const Translate = require('../models/translate');
+const Language  = require('../models/language');
 
-// language 
-const getLanguge = () => {
-  const language = [
-    { id: 1, name: 'Anh' },
-    { id: 2, name: 'Trung' },
-    { id: 3, name: 'Pháp' },
-    { id: 4, name: 'Đức' },
-    { id: 5, name: 'Nhật' },
-  ];
-  return language;
+// languages
+const getLanguage = async () => {
+  // get getLanguage from database language
+  try {
+      const data = await Language.find({});
+      return data;
+  } catch (error) {
+      logger.error(error);
+  }
+
+}
+// add new language 
+const listLanguage = async (req, res) => {
+  try {
+    if (!req.session.daDangNhap){
+      return res.redirect('/login');
+    }
+    const languages = await getLanguage();
+    res.render('list_language', { languages });
+  } catch (error) {
+    logger.error(error);
+  }
 }
 
-const index = (req, res) => {
+const addLanguage = async (req, res) => {
+    // create new language from req
+    if (!req.session.daDangNhap){
+      return res.redirect('/login');
+    }
+    const { name, description } = req.body;
+    const newLanguage = new Language({
+        name,
+        description,
+    });
+    // save new language to database
+    await newLanguage.save();
+    // redirect to list language page
+    return res.redirect('/create-langue');
+}
+
+// delete language
+const deleteLanguage = async (req, res) => {
+  const { id } = req.params;
+  await Language.findByIdAndDelete(id);
+  return res.redirect('/create-langue');
+}
+
+const index = async (req, res) => {
   if (!req.session.daDangNhap){
     return res.redirect('/login');
   }
   // render the index page
   logger.info('index');
-  res.render('index', { languages: getLanguge() });
+  let languages = await getLanguage();
+  res.render('index', { languages });
 }
 
-const translate = (req, res) => {
+const translate = async (req, res) => {
   // render the index page
   logger.info('find_word');
-  res.render('find_word', { languages: getLanguge() });
+  let languages = await getLanguage();
+  res.render('find_word', { languages });
 }
 
 const allList = async (req, res) => {
@@ -49,8 +87,8 @@ const allList = async (req, res) => {
     }
   }
   // get all data from Vietnamese and Foreign_language
-
-  res.render('allList', { data , keyword, languages: getLanguge() });
+  let languages = await getLanguage();
+  res.render('allList', { data , keyword, languages: languages });
 }
 
 // write function api_find_word(req, res) 
@@ -87,7 +125,7 @@ const api_find_word = async (req, res) => {
   for (let i = 0; i < id2.length; i++) {
     for (let j = 0; j < list_word.length; j++) {
       if (id2[i][type_id2] == list_word[j]._id) {
-        if (language != 0 && type == 1){
+        if (language != '0' && type == 1){
           if (list_word[j]['language'] == language){
             list_anouce.push({
               id_trans : id2[i]['_id'],
@@ -211,4 +249,7 @@ module.exports = {
   allList,
   delete_list,
   api_find_word,
+  addLanguage,
+  listLanguage,
+  deleteLanguage,
 }

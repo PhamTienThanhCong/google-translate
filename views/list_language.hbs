@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>List Ngôn ngữ</title>
 </head>
 <body>
     <style>
@@ -58,10 +58,22 @@
             color: white;
         }
         /* list langue view using table */
+        .btn-back{
+            padding: 0.5rem 1rem;
+            font-size: 16px;
+            background-color: rgb(87, 168, 245);
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </body>
-
-    <form action="/addLanguage" method="POST" class="form-add-langue">
+    <a href="/all-list">
+        <button class="btn-back"><<< Danh sách từ điển</button>
+    </a>
+    <form action="/create-langue-action" method="POST" class="form-add-langue">
         <h1>
             Trang thêm trường ngôn ngữ mới
         </h1>
@@ -82,49 +94,15 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <% for(var i = 0; i < list.length; i++) { %>
-                    <tr>
-                        <td><%= list[i].name %></td>
-                        <td><%= list[i].description %></td>
-                        <td>
-                            <a href="/delete/<%= list[i].id %>">Xóa</a>
-                            <a href="/edit/<%= list[i].id %>">Sửa</a>
-                        </td>
-                    </tr>
-                <% } %> -->
+                {{#each languages}}
                 <tr>
+                    <td>{{this.name}}</td>
+                    <td>{{this.description}}</td>
                     <td>
-                        Tên
-                    </td>
-                    <td>
-                        Mô tả
-                    </td>
-                    <td>
-                        Thao tác
+                        <a href="/deleteLanguage/{{this._id}}">Xóa</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        Tên
-                    </td>
-                    <td>
-                        Mô tả
-                    </td>
-                    <td>
-                        Thao tác
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tên
-                    </td>
-                    <td>
-                        Mô tả
-                    </td>
-                    <td>
-                        Thao tác
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

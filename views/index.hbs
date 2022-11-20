@@ -4,69 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thêm từ điển</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
-
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    .container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .container h1{
-        font-size: 3rem;
-        color: #333;
-        margin-bottom: 35px;
-    }
-    .form-group{
-        width: 800px;
-        display: flex;
-        /* flex-direction: column; */
-        align-items: center;
-        justify-content: center;
-        margin: 1rem 0;
-    }
-    .form-control {
-        width: 40%;
-        margin: 0 auto;
-        display: block;
-        padding: 0.5rem;
-        font-size: 18px;
-        outline: none;
-        height: 100px;
-        /* textarea resize only height */
-        resize: vertical;
-    }
-    .btn{
-        padding: 0.5rem 1rem;
-        font-size: 18px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .btn-primary{
-        background-color: rgb(51, 51, 51);
-        color: #fff;
-    }
-    body{
-        padding: 20px;
-    }
-    .form-group select{
-        height: auto;
-    }
-</style>
-
 <body>
-    <a href="/">Trang tra cứu</a>
-    <br>
-    <a href="/all-list">Danh sách từ điển</a>
+    <a href="/all-list">
+        <button class="btn-back"><<< Danh sách từ điển</button>
+    </a>
     <form class="container" method="post" action="./save">
         <h1>
             Add dictionary translate
@@ -84,7 +28,7 @@
             <select class="form-control" name="language" id="">
                 {{!-- each language --}}
                 {{#each languages}}
-                    <option value="{{this.id}}">Tiếng {{this.name}}</option>
+                    <option value="{{this._id}}">Tiếng {{this.name}}</option>
                 {{/each}}
             </select>
         </div>
@@ -94,7 +38,6 @@
         <div class="form-group">
             <button id="translate" class="btn btn-primary">Translate</button>
         </div>
-    <a href="/logout">Đăng xuất</a>
     </form>
 </body>
 </html>

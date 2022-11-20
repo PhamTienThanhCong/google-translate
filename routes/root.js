@@ -7,6 +7,10 @@ module.exports = (app) => {
   app.route('/all-list').get(root_controller.allList)
   app.route('/find').get(root_controller.api_find_word)
   app.route('/delete').post(root_controller.delete_list)
+  app.route('/create-langue').get(root_controller.listLanguage)
+  app.route('/create-langue-action').post(root_controller.addLanguage)
+  app.route('/deleteLanguage/:id').get(root_controller.deleteLanguage)
+
   // post method
   app.route('/save').post(root_controller.add)
 
