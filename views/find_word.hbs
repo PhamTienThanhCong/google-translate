@@ -1,161 +1,200 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tra cứu từ điển</title>
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm kiếm từ điển</title>
-    <link rel="stylesheet" href="/css/findWord.css">
-</head>
-
-<style>
+    <!-- FontAweome CDN Link for Icons -->
+    <script src="https://kit.fontawesome.com/c71231073e.js" crossorigin="anonymous"></script>
+  </head>
+  <style>
+    /* Import Google Font - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
     *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-.container{
+    font-family: 'Poppins', sans-serif;
+    }
+    body{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-top: 50px;
-    /* height: 100vh; */
-}
-.container h1{
-    font-size: 3rem;
-    color: #333;
-    margin-bottom: 30px;
-}
-.form-group{
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10px;
+    background: #675AFE;
+    }
+    ::selection{
+    color: #fff;
+    background: #675AFE;
+    }
+    .wrapper{
+    width: 50%;
+    min-width: 370px;
+    padding: 30px;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+    }
+    .wrapper header{
+    font-size: 28px;
+    font-weight: 500;
+    text-align: center;
+    }
+    .wrapper form{
+    margin: 40px 0 20px 0;
+    }
+    form :where(input, select, button){
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    }
+    form p{
+    font-size: 18px;
+    margin-bottom: 5px;
+    }
+    form input{
+    height: 50px;
+    font-size: 17px;
+    padding: 0 15px;
+    border: 1px solid #999;
+    }
+    form input:focus{
+    padding: 0 14px;
+    border: 2px solid #675AFE;
+    }
+    form .drop-list{
     width: 100%;
     display: flex;
+    margin-top: 20px;
     align-items: center;
     justify-content: space-between;
-    margin: 1rem 0;
-}
-.form-group-2{
-    justify-content: center;
-}
-.form-control {
-    width: 40%;
-    margin: 0 auto;
-    display: block;
-    padding: 0.5rem;
-    font-size: 18px;
-    outline: none;
-    height: 100px;
-    /* textarea resize only height */
-    resize: vertical;
-}
-.form-control-2{
-    width: 40%;
-    margin: 0 auto;
-    display: block;
-    padding: 0;
-    height: 100px;
-    position: relative;
-}
-.form-control-2 textarea{
-    width: 100%;
-    margin: 0;
-    padding: 0.5rem;
-}
-.btn{
-    padding: 0.5rem 1rem;
-    font-size: 18px;
-    background-color: #333;
-    color: #fff;
-    border: none;
+    }
+    .drop-list .select-box{
+    display: flex;
+    
+    min-width: 115px;
+    height: 45px;
+    align-items: center;
     border-radius: 5px;
+    justify-content: center;
+    border: 1px solid #999;
+    }
+    .to, .from{
+        width: 40%;
+    }
+    .select-box img{
+    max-width: 21px;
+    }
+    .select-box select{
+    width: 100%;
+    font-size: 16px;
+    background: none;
+    padding: 0 10px;
+    }
+    .select-box select::-webkit-scrollbar{
+    width: 8px;
+    }
+    .select-box select::-webkit-scrollbar-track{
+    background: #fff;
+    }
+    .select-box select::-webkit-scrollbar-thumb{
+    background: #888;
+    border-radius: 8px;
+    border-right: 2px solid #ffffff;
+    }
+    .drop-list .icon{
     cursor: pointer;
-}
-.btn-primary{
-    background-color: rgb(51, 51, 51);
+    margin-top: 30px;
+    font-size: 22px;
+    }
+    form .exchange-rate{
+    font-size: 17px;
+    margin: 20px 0 30px;
+    /* remove dot */
+    list-style: none;
+    max-height: 150px;
+    overflow-y: scroll;
+    }
+    form button{
+    height: 52px;
     color: #fff;
-}
-#description{
-    margin-top: 20px;
-    font-size: 19px;
-}
-#description b{
-    color: rgb(133, 37, 37);
-}
-#list-same{
-    margin-top: 15px;
-    font-size: 18px;
-}
-#list-same li{
-    margin-top: 5px;
-    margin-left: 30px;
-}
-.form-group select{
-    height: auto;
-}
-body{
-    padding: 20px;
-}
-#list-languge{
-    padding: 0;
-    margin: 0;
-    margin-top: -70px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-</style>
-
-<body>
-    <a href="/all-list">Trang dành cho quản trị</a>
-    <form class="container" method="get" id="form_submit">
-        <h1>
-            Tra cứu từ điển
-        </h1>
-        <div class="form-group form-group-2">
-            <button type="button" onclick="change_langue()" id="translate" class="btn btn-primary">Tiếng Việt <=> Ngoại Ngữ</button>
+    font-size: 17px;
+    cursor: pointer;
+    background: #675AFE;
+    transition: 0.3s ease;
+    }
+    form button:hover{
+    background: #4534fe;
+    }
+    .trans-list{
+        border-left: 2px solid #675AFE;
+        padding-left: 10px;
+        margin-bottom: 10px;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>Tra cứu từ điển</header>
+      <form action="#" id="form_submit">
+        <div class="amount">
+          <p>Nhập Từ Cần Tra Cứu</p>
+          <input type="hidden" value="1" id="type_trans">
+          <input type="text" name="text1" placeholder="Nhập Từ Cần Tra Cứu">
         </div>
-        <div class="form-group">
-            <input type="hidden" value="1" id="type_trans">
-            <textarea type="text" id="" name="text1" class="form-control" placeholder="Từ gì đó ở đây !!!"></textarea>
-            <label for=""><=></label>
-            <div class="form-control-2">
-
-                <div class="form-group"  id="list-languge">
-                    <select class="form-control" id="list-language" name="language">
-                        {{#each languages}}
-                            <option value="{{this._id}}">Tiếng {{this.name}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-
-                <textarea type="text" id="" name="text2" class="form-control" readonly></textarea>
-                
-                <p id="description">
-                    <b>Chú ý:</b> Nếu bạn muốn tra cứu từ điển tiếng Việt - Ngoại ngữ, bạn hãy nhập từ tiếng Việt vào ô trên cùng, sau đó nhấn nút "Tiếng Việt <=> Ngoại Ngữ" để chuyển sang chế độ tra cứu từ điển tiếng Việt - Ngoại ngữ.
-                </p>
-
-                <ol id="list-same" type="none">
-                </ol>
+        <div class="drop-list">
+          <div class="from">
+            <p id="text-left">From</p>
+            <div class="select-box">
+              <select>
+                <option>
+                    Tiếng Việt
+                </option>
+              </select>
             </div>
+          </div>
+          <div class="icon" id="type_icon" onclick="change_langue()"><i class="fa-solid fa-arrow-right"></i></div>
+          <div class="to">
+            <p id="text-right">To</p>
+            <div class="select-box">
+              <select name="language" id="list-language">
+                {{#each languages}}
+                    <option value="{{this._id}}">Tiếng {{this.name}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="form-group form-group-2">
-            <button id="translate" class="btn btn-primary">Tra Cứu</button>
-        </div>
-    </form>
-</body>
-<!-- jquery import -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <p style="margin-top: 10px; margin-bottom: -10px;">Kết quả</p>
+        <ul class="exchange-rate">  
+            <a href="/admin">Truy cập trang admin</a>
+        </ul>
+        <button>Tra cứu</button>
+      </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-    let language = 1;
+    let language = document.getElementById('list-language').value;
+    let root_langue = document.getElementsByClassName("exchange-rate")[0];
     function change_langue(){
-        let type = "Ngoại Ngữ <=> Tiếng Việt";
+        let type = `<i class="fa-sharp fa-solid fa-arrow-left"></i>`;
         let type_trans = document.getElementById("type_trans");
         if (type_trans.value == 1){
             type_trans.value = 2;
+            document.getElementById("text-left").innerText = "To";
+            document.getElementById("text-right").innerText = "From";
         }else{
             type_trans.value = 1;
-            type = "Tiếng Việt <=> Ngoại Ngữ";
+            type = `<i class="fa-solid fa-arrow-right"></i>`;
+            document.getElementById("text-left").innerText = "From";
+            document.getElementById("text-right").innerText = "To";
         }
-        document.getElementById("translate").innerHTML = type;
+        document.getElementById("type_icon").innerHTML = type;
     }
     document.getElementById('list-language').addEventListener('change', function() {
         language = this.value;
@@ -164,7 +203,7 @@ body{
         e.preventDefault();
         let text = document.getElementsByName("text1")[0].value;
         let type  = document.getElementById("type_trans").value;
-
+        console.log(text, type, language);
         $.ajax({
             type: "GET",
             url: "/find",
@@ -176,21 +215,37 @@ body{
             },
             success: function(response){
                 if (response.length == 0){
-                    alert("Không tìm thấy từ này, hãy tạo mới ngay!");
+                    root_langue.innerHTML = `<li>Không tìm thấy từ này</li> <a href="/login">Truy cập trang admin</a>`;
+                    swal({
+                        title: "Không tìm thấy chữ",
+                        text: `Từ ${text} không có trong từ điển của chúng tôi`,
+                        icon: "error",
+                        button: ["Quay lại" ],
+                    });
                 }else{
-                    document.getElementsByName("text2")[0].value = response[0].word;
-                    document.getElementById("list-same").innerHTML = "<h3>Từ cùng nghĩa</h3>";
-                    for (let i = 1; i < response.length; i++){
-                        document.getElementById("list-same").innerHTML += "<li>" + response[i].word + "</li>";
+                    root_langue.innerHTML = ``;
+                    for (let i = 0; i < response.length; i++){
+                        if (response[i].description){
+                            root_langue.innerHTML += `
+                            <li class="trans-list">
+                                <b>${response[i].word}</b>
+                                <p>- Giải thích: ${ response[i].description }</p>
+                            </li>
+                        `
+                        }else{
+                            root_langue.innerHTML += `
+                            <li class="trans-list">
+                                <b>${response[i].word}</b>
+                            </li>
+                        `
+                        }
                     }
-                    if (response[0].description != null){
-                        document.getElementById("description").innerHTML = "Chú Thích: " + response[0].description;
-                    }else{
-                        document.getElementById("description").innerHTML = "Chú Thích";
-                    }
+                    root_langue.innerHTML += `<a href="/login">Truy cập trang admin</a>`;
                 }
             }
         })
     })
 </script>
+
+  </body>
 </html>
