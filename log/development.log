@@ -2132,3 +2132,76 @@
 {"message":"Mon Nov 21 2022 00:34:23 GMT+0700 (Indochina Time): GET /login","level":"info"}
 {"message":"login","level":"info"}
 {"message":"Mon Nov 21 2022 00:34:24 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"Mon Nov 21 2022 20:40:37 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:40:39 GMT+0700 (Indochina Time): GET /favicon.ico","level":"info"}
+{"message":"Mon Nov 21 2022 20:40:41 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:40:51 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1c%20kh%E1%BA%A7u&language=0","level":"info"}
+{"message":"Mon Nov 21 2022 20:40:58 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1c%20kh%E1%BA%A7u&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:00 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1c%20kh%E1%BA%A7u&language=637b4c9fdf2c79405cb3ad4a","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:02 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1c%20kh%E1%BA%A7u&language=0","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:48 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:50 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:50 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:51 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:51 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:41:53 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:11 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:13 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:21 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1i%20qu%E1%BB%91c&language=0","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:22 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1i%20qu%E1%BB%91c&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:24 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1i%20qu%E1%BB%91c&language=637b4c9fdf2c79405cb3ad4a","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:26 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1i%20qu%E1%BB%91c&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:27 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1i%20qu%E1%BB%91c&language=0","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:53 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:56 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:42:59 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:43:01 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:43:18 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:43:20 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"Mon Nov 21 2022 20:43:37 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:43:40 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:44:34 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:44:36 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:04 GMT+0700 (Indochina Time): GET /list-word","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:06 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:11 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:11 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:13 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:14 GMT+0700 (Indochina Time): GET /find?type=1&word=Xin%20ch%C3%A0o&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:17 GMT+0700 (Indochina Time): GET /login","level":"info"}
+{"message":"login","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:19 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:45:20 GMT+0700 (Indochina Time): GET /find?type=1&word=Xin%20ch%C3%A0o&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:22 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:23 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:24 GMT+0700 (Indochina Time): GET /find?type=1&word=&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:25 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:28 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:30 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:47:32 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1%C4%91&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:48:56 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Mon Nov 21 2022 20:48:57 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Mon Nov 21 2022 20:48:58 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:48:58 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1dasd&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:02 GMT+0700 (Indochina Time): GET /find?type=1&word=%C3%A1dasd&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:17 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:18 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:19 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:21 GMT+0700 (Indochina Time): GET /find?type=1&word=sdad&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:36 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:37 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:38 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"Mon Nov 21 2022 20:49:38 GMT+0700 (Indochina Time): GET /find?type=1&word=sadasd&language=6379f101f6f823267cb59c9d","level":"info"}

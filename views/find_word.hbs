@@ -220,8 +220,21 @@
                         title: "Không tìm thấy chữ",
                         text: `Từ ${text} không có trong từ điển của chúng tôi`,
                         icon: "error",
-                        button: ["Quay lại" ],
+                        button: "Tìm kiếm",
                     });
+                    swal({
+                          title: "Không tìm thấy chữ",
+                          text: `Từ ${text} không có trong từ điển của chúng tôi`,
+                          icon: "error",
+                          buttons: ["Trở lại", "Tra cứu"],
+                          dangerMode: "Tra cứu",
+                        })
+                        .then((willDelete) => {
+                          if (willDelete) {
+                            window.location.href = "/list-word";
+                          } else {
+                          }
+                        });
                 }else{
                     root_langue.innerHTML = ``;
                     for (let i = 0; i < response.length; i++){

@@ -4,6 +4,9 @@ const auth_controller = require('../controllers/auth');
 module.exports = (app) => {
   app.route('/create').get(root_controller.index)
   app.route('/').get(root_controller.translate)
+
+  app.route('/list-word').get(root_controller.list_word)
+
   app.route('/all-list').get(root_controller.allList)
   app.route('/find').get(root_controller.api_find_word)
   app.route('/delete').post(root_controller.delete_list)

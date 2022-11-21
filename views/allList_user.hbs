@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>danh sách từ điển</title>
+</head>
+
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    padding: 0 50px;
+    margin-top: 30px;
+}
+.content{
+    width: 100%;
+    display: flex;
+}
+.nav-slider{
+    width: 35%;
+    background-color: #f1f1f1;
+}
+.nav-slider ul{
+    list-style: none;
+    padding: 0 10px;
+    height: calc(100vh - 200px);
+    overflow: scroll;
+}
+.nav-slider ul li{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.nav-slider ul li a{
+    /* tag a to p */
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: inline-block;
+}
+/* animation */
+.nav-slider ul li a:hover{
+    color: red;
+}
+.main-content{
+    width: 65%;
+    background-color: #e9e9e9;
+}
+.search-form{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.search-form input{
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.btn{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.btn-type{
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.main-header{
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.main-header a{
+    text-decoration: none;
+    color: black;
+}
+.main-content{
+    padding: 10px;
+    height: calc(100vh - 200px);
+    overflow: scroll;
+}
+.list-diction{
+    list-style: none;
+    padding-left: 40px;
+}
+.list-diction li{
+    font-size: 17px;
+    /* margin-bottom: 10px; */
+    padding: 10px 0;
+    border-bottom: 1px dotted rgb(95, 90, 90);
+}
+.active{
+    background-color: rgb(224, 105, 105);
+    border-radius: 3px;
+}
+</style>
+
+{{!-- <link rel="stylesheet" href="/css/allList.css"> --}}
+<body>
+    <h1 style="text-align: center; margin-top: 10px;">Danh sách từ điển</h1>
+    <div class="container">
+        <div class="header-search">
+            <form action="/all-list" class="search-form" method="GET">
+                <input type="text" name="keyword" placeholder="Nhập từ cần tìm kiếm" value="{{keyword}}">
+                <button class="btn">Tìm kiếm</button>
+                <a href="/"><button class="btn" style="background-color: rgb(38, 173, 252);" type="button">Quay lại tìm kiếm</button></a>
+            </form>
+        </div>
+        <div class="content">
+            <div class="nav-slider">
+                <ul>
+                    {{#each data}}
+                        <li id="{{this._id}}"><a href="#" onclick="find_world('{{this.word}}')">{{this.word}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="main-content">
+                <div class="main-header">  
+                    <a href="#">
+                        <button class="btn-type active">Tất Cả<button>
+                    </a>             
+                    {{#each languages}}
+                        <a href="#">
+                            <button class="btn-type">Việt - {{this.name}}<button>
+                        </a>
+                    {{/each}}
+                </div>
+                <b style="color: red; font-size: 19px;" id="id_tv">Quản lý từ vựng</b>
+                <ul class="list-diction"  id="list-diction">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let data;
+    let language = '0';
+    let last_word = "";
+    let list_language = [
+        '0',
+        {{#each languages}}
+            "{{this._id}}",
+        {{/each}}
+    ];
+    function change_language(number){
+        language = number;
+    }
+    var btn = document.getElementsByClassName('btn-type')
+    // foreach btn
+    for (let i = 0; i < btn.length ; i++){
+        // btn add Event Listener
+        btn[i].addEventListener('click', function(){
+            // remove class active
+            for (let j = 0; j < btn.length; j++){
+                btn[j].classList.remove('active');
+            }
+            // add class active
+            this.classList.add('active');
+            change_language(list_language[i]);
+
+            if (last_word != ""){
+                find_world(last_word);
+            }
+        })
+    }
+    function find_world(world){
+        document.getElementById("id_tv").innerHTML = `Từ: ${world}`;
+        last_word = world;
+        $.ajax({
+            type: "GET",
+            url: "/find",
+            dataType: "json",
+            data: {
+                type: 1,
+                word: world,
+                language: language
+            },
+            success: function(response){
+                let root = document.getElementById("list-diction");
+                data = response
+                if (response.length == 0){
+                    root.innerHTML = 'Từ điển trống ?';
+                }else{
+                    root.innerHTML = '';
+                    for (let i = 0 ; i < response.length ; i++){
+                        if (response[i].description == null){
+                            response[i].description = "Trống"
+                        }
+                        root.innerHTML += `
+                            <li id="${response[i].id_trans}">
+                                <b>Nghĩa: ${response[i].word}</b> 
+                                <br>
+                                <span>- Giải thích: ${response[i].description}</span>
+                                <br>
+                                Hành động: <a href="#" onclick="delete_action('${response[i].id_trans}')">Xóa từ điển</a>
+                            </li>
+                        `;
+                    }
+                }
+            }
+        })
+    }
+    function delete_action(id_trans){
+        $.ajax({
+            type: "POST",
+            url: "/delete",
+            dataType: "json",
+            data: {
+                id: id_trans
+            },
+            success: function(response){
+                if (response.status == true){
+                    document.getElementById(response.id_trans).remove();
+                    if (response.tv_delete == true){
+                        document.getElementById(response.id_tv).remove();
+                    }
+                }
+            }
+        })
+    }
+</script>
+</html>

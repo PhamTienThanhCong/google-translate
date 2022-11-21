@@ -38,7 +38,7 @@ hbs.registerHelper('screamIt', (text) => { //ViewHelper
 // app.listen(process.env.PORT || 3000)
 // app.listen(config.server.port, (err) 
 
-app.listen(process.env.PORT || 3000, (err) => {
+app.listen(config.server.port, (err) => {
   if(err) {
     logger.error(err);
     process.exit(1);
@@ -48,7 +48,7 @@ app.listen(process.env.PORT || 3000, (err) => {
   require('../routes/root')(app);
 
   logger.info(
-    `API is now running on port in ${config.server.environment} mode`
+    `API is now running on port in mode`
   );
 
   app._router.stack.forEach(function(r){

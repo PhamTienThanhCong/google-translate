@@ -99,6 +99,25 @@ const allList = async (req, res) => {
   res.render('allList', { data , keyword, languages: languages });
 }
 
+const list_word = async (req, res) => {
+  let {keyword} = req.query;
+  if (keyword == undefined){
+    keyword = "";
+  }
+  // search in Vietnamese from word 
+  let data_raw = await my_function.list(Vietnamese);
+  let data = [];
+  console.log(keyword);
+  for (let i = 0; i < data_raw.length; i++) {
+    if (data_raw[i].word.includes(keyword)){
+      data.push(data_raw[i]);
+    }
+  }
+  // get all data from Vietnamese and Foreign_language
+  let languages = await getLanguage();
+  res.render('allList_user', { data , keyword, languages: languages });
+}
+
 // write function api_find_word(req, res) 
 const api_find_word = async (req, res) => {
   let { type, word, language } = req.query;
@@ -284,4 +303,5 @@ module.exports = {
   addLanguage,
   listLanguage,
   deleteLanguage,
+  list_word,
 }
