@@ -135,6 +135,19 @@
         padding-left: 10px;
         margin-bottom: 10px;
     }
+    .button-change-page{
+      position: fixed;
+      top : 10px;
+      right: 10px;
+    }
+    .button-link{
+      text-decoration: none;
+      color: #fff;
+      background: #675AFE;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
   </style>
   <body>
     <div class="wrapper">
@@ -170,10 +183,15 @@
         </div>
         <p style="margin-top: 10px; margin-bottom: -10px;">Kết quả</p>
         <ul class="exchange-rate">  
-            <a href="/admin">Truy cập trang admin</a>
+            
         </ul>
         <button>Tra cứu</button>
       </form>
+    </div>
+
+    <div class="button-change-page">
+        <a class="button-link" href="/login">Truy cập trang admin</a>
+        <a class="button-link" href="/list-word">Danh sách từ điển</a>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -220,21 +238,9 @@
                         title: "Không tìm thấy chữ",
                         text: `Từ ${text} không có trong từ điển của chúng tôi`,
                         icon: "error",
-                        button: "Tìm kiếm",
+                        button: "Trở lại",
                     });
-                    swal({
-                          title: "Không tìm thấy chữ",
-                          text: `Từ ${text} không có trong từ điển của chúng tôi`,
-                          icon: "error",
-                          buttons: ["Trở lại", "Tra cứu"],
-                          dangerMode: "Tra cứu",
-                        })
-                        .then((willDelete) => {
-                          if (willDelete) {
-                            window.location.href = "/list-word";
-                          } else {
-                          }
-                        });
+                    
                 }else{
                     root_langue.innerHTML = ``;
                     for (let i = 0; i < response.length; i++){
