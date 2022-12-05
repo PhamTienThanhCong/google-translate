@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="css/account.css">
+    <title>Tài khoản</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        {{>header}}
+
+        <div id="mainContent">
+            <div id="content-header">
+                <ul class="nav">
+                    <li><a href="">Trang chủ</a> </li>
+                    <span class="space">/</span>
+                    <li><a href="">Giỏ hàng</a> </li>
+                </ul>
+            </div>
+
+            <div class="wrapper-acc">
+                <div class="heading-acc">
+                    <div class="header-page">
+                        <h1>Tài khoản của bạn</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-acc">
+                <div class="left-menu">
+                    <div class="menu-title">
+                        <h3>Tài khoản</h3>
+                    </div>
+                    <div class="menu-content">
+                        <ul>
+                            <li><a href="/account">Thông tin tài khoản</a></li>
+                            <li><a href="/signout">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="right-detail">
+                    <div class="detail-title">
+                        <h4>Thông tin tài khoản</h4>
+                    </div>
+    
+                    <div class="detail-name line-space">
+                       <p>{{ name }}</p>
+                    </div>
+    
+                    <div class="detail-birthday line-space">
+                        <p>{{ birthday }}</p>
+                    </div>
+    
+                    <div class="detail-email line-space">
+                        <p>{{ email }}</p>
+                    </div>
+    
+                    <div class="detail-phonenumber line-space">
+                        <p>{{ phoneNumber }}</p>
+                    </div>
+                     <div class="detail-phonenumber line-space">
+                        <p>{{ address }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact">
+                    <p>Hỗ trợ/Mua hàng: 0123456789</p>
+            </div>
+        </div>
+
+        {{>footer}}
+    </div>
+</body>
+</html>

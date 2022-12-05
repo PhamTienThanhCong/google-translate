@@ -1,4 +1,6 @@
 const express = require('express');
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
 const hbs = require('hbs');
 const path = require('path');
 const fs = require('fs');
@@ -15,7 +17,16 @@ app.use(logger_request_middleware);
 app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}));
+
 app.use(express.static(__dirname + '/public')); // public
+
 
 hbs.registerHelper('getCurrentYear', () => { //ViewHelper
   return new Date().getFullYear();
@@ -25,6 +36,12 @@ hbs.registerHelper('screamIt', (text) => { //ViewHelper
   return text.toUpperCase();
 });
 
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 // run server
 app.listen(config.server.port, (err) => {
   if(err) {

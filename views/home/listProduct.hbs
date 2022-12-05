@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="css/listProduct.css">
+    <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
+</head>
+<body>
+    <div id="wrapper">
+        {{>header}}
+
+        <div id="mainContent">
+            <div id="content-header">
+                <ul class="nav">
+                    <li><a href="/">Trang chủ</a> </li>
+                    <span class="space">/</span>
+                    <li><a href="/listProduct">Danh mục</a> </li>
+                    <span class="space">/</span>
+                    <li class="new-product"><a href="">Sản phẩm</a> </li>
+                </ul>
+            </div>
+
+            <div id="content-body">
+                <div class="menu">
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="#">
+                                TOPS
+                                <i class="more-icon ti-minus"></i>
+                            </a>
+                            
+                            <ul class="subnav" >
+                                <li><a href="">TEE</a> </li>
+                                <li><a href="">POLO</a> </li>
+                                <li><a href="">HOODIE & SWEATER</a> </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                BOTTOM
+                            <i class="more-icon ti-minus"></i>
+
+                            </a>
+                            <ul class="subnav">
+                                <li><a href="">SHORT</a> </li>
+                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                ACCESSORIES
+                                <i class="more-icon ti-minus"></i>
+                            </a>
+                            
+                            <ul class="subnav">
+                                <li><a href="">TOTE BAG</a></li>
+                            </ul>
+                            
+                        </li>
+                    </ul>
+                    
+                </div>
+
+                <div id="product-section">
+                    <div class="product-title">
+                        <h2>Sản phẩm</h2>
+                    </div>
+
+                    <div class="product-list">
+                        {{#each products}}
+                            <div class="product">
+                               <a href="/productDetail?id={{ this._id }}">
+                                 <div class="product-pic">                              
+                                    <img class="pic " src="{{this.product_url}}" alt="">
+                                    <div class="product-sale">
+                                        <span>-18%</span>
+                                    </div>
+                                </div>
+                               </a>
+                            <div class="product-detail">
+                                <a href="/productDetail?id={{ this._id }}">
+                                    <h3 class="product-name">{{this.product_name}}</h3>
+                                </a>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>{{this.product_price}}</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                            {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         {{>footer}}
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top">TOP</button>
+    </div>
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

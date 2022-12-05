@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Quicksand">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/cart.css">
+    <title>Cart</title>
+</head>
+<body>
+    <div id="wrapper">
+
+        {{>header}}
+        
+        <div id="mainContent">
+
+            <div id="content-header">
+                <ul class="nav">
+                    <li><a href="">Trang chủ</a> </li>
+                    <span class="space">/</span>
+                    <li><a href="">Giỏ hàng</a> </li>
+                </ul>
+            </div>
+
+            <div class="wrapper-cart">
+                <div class="heading-cart">
+                    <div class="header-page">
+                        <h1>Giỏ hàng của bạn</h1>                 
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper-order-cart">
+                <div class="main-cart">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="image"></th>
+                                <th class="item"></th>
+                                <th class="remove"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           {{#each products}}
+                                 <tr class="item-container">
+                                <td class="image">
+                                    <div class="product-image">
+                                        <a href="">
+                                            <img src="{{this.cart_product_url}}" alt="">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="item_product">                              
+                                        <h3>
+                                             <a href="">{{this.cart_product_name}}</a>
+                                        </h3>                                                     
+                                    <p>
+                                        <span class="price">{{this.cart_product_price}}</span>
+                                    </p>
+                                    <p class="size">
+                                        <span class="size-title">{{this.cart_product_size }}</span>
+                                    </p>
+                                    <p class="total">
+                                        Tạm tính: <span class="totalPrice"></span>
+                                    </p>
+                                    <form class="quantity" type="submit" action="/updateCart/{{this._id}}" method="post">
+                                        <button class="sub" type="button">-</button>
+                                        <input type="text" class="quantity-input" name="cart_product_quantity" value="{{this.cart_product_quantity}}">
+                                        <button class="add" type="button">+</button>
+                                        <button type="submit" class="update">Cập nhật</button>                        
+                                    </form>
+                                    <form type="submit" action="/deleteCart/{{this._id}}" method="post">
+                                         <button type="submit" class="delete">X</button>
+                                    </form>
+                                </td>
+                                <td class="remove"></td>
+                            </tr>
+                           {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="order-cart">
+                    <div class="order-inner">
+                        <div class="order-title">
+                            <h3 style=" margin-bottom: 20px;">Thông tin đơn hàng</h3>
+                        </div>
+    
+                        <div class="order-total">
+                            <p style=" margin-bottom: 20px;">
+                                Tổng tiền: <span class="total-bill" id="total-bill"></span>
+                            </p>
+                        </div>
+    
+                        <div class="order-text">
+                            <p style=" margin-bottom: 20px;">Phí vận chuyển sẽ được tính ở trang thanh toán.
+                                <br> 
+                            Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
+                        </div>
+    
+                        <form class="order-action" action="/bill" method="post">
+                            <button type="submit" class="buy-btn">THANH TOÁN</button>                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{>footer}}
+    </div>
+
+   
+    
+    <script>
+        const cart = document.getElementsByClassName("wrapper-order-cart")[0]
+        const buy_btn = document.getElementsByClassName("buy-btn")[0]
+        {{!-- buy_btn.addEventListener("click", function(){
+            setTimeout(swal("Thank you", "Xác nhận đơn hàng!", "success"), 3000);
+        })  --}}
+        const add_btn = document.getElementsByClassName("add");
+        const sub_btn = document.getElementsByClassName("sub");
+        const totalPrice = document.getElementsByClassName("totalPrice");
+        const price = document.getElementsByClassName("price");
+        const quantity_input = document.getElementsByClassName("quantity-input");
+
+        const total_bill = document.getElementById("total-bill");
+
+        total_bill.innerText = 0;
+
+        for (let i = 0 ; i < add_btn.length ; i++){
+            add_btn[i].addEventListener("click", function(){
+                quantity_input[i].value = parseInt(quantity_input[i].value) + 1;
+                update(i);
+            })
+            sub_btn[i].addEventListener("click", function(){
+                if (parseInt(quantity_input[i].value) > 1){
+                    quantity_input[i].value = parseInt(quantity_input[i].value) - 1;
+                    update(i);
+                }
+            })
+            update(i);
+        }
+
+        function update(i){
+            totalPrice[i].innerText = parseInt(quantity_input[i].value) * parseInt(price[i].innerText);
+        }
+
+        function updateTotalBill(){
+            let total = 0
+            for (let i = 0 ; i < totalPrice.length; i++){
+               total += parseInt(totalPrice[i].innerText) 
+            }
+            total_bill.innerText = total;
+        }
+        updateTotalBill()
+    
+
+    </script>
+</body>
+</html>

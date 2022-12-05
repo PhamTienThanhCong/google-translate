@@ -1,18 +1,29 @@
-const vietnamese_controller = require('../controllers/vietnamese');
-const foreign_language_controller = require('../controllers/foreign_language');
-const root_controller = require('../controllers/root');
-const translate_controller = require('../controllers/translate');
+const userController = require('../controllers/user');
+const homeController = require('../controllers/home');
 
 
 module.exports = (app) => {
-  app.route('/list').get(vietnamese_controller.list)
-  app.route('/list_en').get(foreign_language_controller.list)
-  app.route('/list_trs').get(translate_controller.list)
-  app.route('/create').get(root_controller.index)
-  app.route('/').get(root_controller.translate)
-  app.route('/all-list').get(root_controller.allList)
-  app.route('/find').get(root_controller.api_find_word)
-  app.route('/delete').post(root_controller.delete_list)
-  // post method
-  app.route('/save').post(root_controller.add)
+
+  app.route('/productDetail').get(homeController.productDetail)
+  app.route('/listProduct').get(homeController.listProduct)  
+  app.route('/view').get(homeController.view) 
+  app.route('/store').get(homeController.store) 
+  app.route('/home').get(homeController.home)
+  app.route('/cart').get(homeController.cart)
+  app.route('/account').get(homeController.account)
+  
+  
+  app.route('/register').get(userController.register)
+  app.route('/login').get(userController.login)
+  app.route('/signout').get(userController.signout)
+  app.route('/bill').get(homeController.order)
+  app.route('/bill').post(homeController.bill)
+  
+  app.route('/registerProcessing').post(userController.registerProcessing)
+  app.route('/loginProcessing').post(userController.loginProcessing)
+  app.route('/addToCart').post(homeController.addToCart)
+  app.route('/updateCart/:id').post(homeController.updateCart)
+  app.route('/deleteCart/:id').post(homeController.deleteCart)
+
+  app.route('/').get(homeController.home)
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bill.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        {{>header}}
+        <div id="main-content">
+            <div id="content-header">
+                <ul class="nav">
+                    <li><a href="">Trang chủ</a> </li>
+                    <span class="space">/</span>
+                    <li><a href="">Giỏ hàng</a> </li>
+                </ul>
+            </div>
+
+            <div class="wrapper-cart">
+                <div class="heading-cart">
+                    <div class="header-page">
+                        <h1>Đơn hàng của bạn</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-order-cart">
+                <div class="main-cart">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="image"></th>
+                                <th class="item"></th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each bill}}
+                            <tr class="item-container">
+                                <td class="image">
+                                    <div class="product-image">
+                                        <a href="">
+                                            <img src="{{this.bill_product_url}}" alt="">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="item_product">
+                                    <h3>
+                                        <a href="">{{this.bill_product_name}}</a>
+                                    </h3>
+                                    <p>
+                                        <span class="price">{{this.bill_product_price}}</span>
+                                    </p>
+                                    <p class="size">
+                                        <span class="size-title">{{this.bill_product_size }}</span>
+                                    </p>
+                                    <input type="text" class="quantity-input" name="bill_product_quantity" value="{{this.bill_product_quantity}}" style="border: none;">
+                                    <p class="total">
+                                        Tổng: <span class="totalPrice"></span>
+                                    </p>
+                                    <p>
+                                        Tình trạng: {{this.bill_product_status}}
+                                    </p>                                 
+                                </td>
+                                
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>       
+            </div>
+        </div>
+        {{>footer}}
+    </div>
+    <script>
+        const totalPrice = document.getElementsByClassName("totalPrice");
+        const price = document.getElementsByClassName("price");
+        const quantity_input = document.getElementsByClassName("quantity-input");
+        const size = document.getElementsByClassName("size")
+
+         for (let i = 0 ; i < size.length ; i++){
+           
+        totalPrice[i].innerText = parseInt(quantity_input[i].value) * parseInt(price[i].innerText);
+                
+            
+         }
+        
+        
+    </script>
+</body>
+
+</html>

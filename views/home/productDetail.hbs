@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết</title>
+    <link rel="stylesheet" href="css/productDetail.css">
+</head>
+
+<body>
+    <div id="wrapper">
+       {{>header}}
+
+
+        <div id="mainContent">
+            <div id="content-header">
+                <ul class="nav">
+                    <li><a href="/">Trang chủ</a> </li>
+                    <span class="space">/</span>
+                    <li><a href="/listProduct">Sản phẩm</a> </li>
+                    <span class="space">/</span>
+                    <li class="new-product"><a href="">{{data.product_name}}</a> </li>
+                </ul>
+            </div>
+            
+            <div class="product-detail-wrapper">
+                <div class="product-detail-content">
+                    <div class="product-content-img">
+                        <div class="img-gallery">
+                            <div class="mini-img">
+                                <div class="mini-img-thumb active">
+                                    <a href="#">
+                                        <img src="{{data.product_url}}" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="mini-img-thumb active">
+                                    <a href="#">
+                                        <img src="{{data.product_url}}" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="mini-img-thumb active">
+                                    <a href="#">
+                                        <img src="{{data.product_url}}" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="mini-img-thumb active">
+                                    <a href="#">
+                                        <img src="{{data.product_url}}" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="mini-img-thumb active">
+                                    <a href="#">
+                                        <img src="{{data.product_url}}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="main-img">
+                            <div class="show-img">
+                                <img src="{{data.product_url}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-content-desc">
+                        <div class="product-title">
+                            {{ data.product_name }}
+                        </div>
+                        <div class="product-sale">
+                            <span class="pro-sale">-18%</span>
+                            <span class="pro-price">{{data.product_price}}</span>
+                            <del>230,000đ</del>
+                        </div>
+                        <div class="select-size">
+                            <div class="select-size-main">
+                                <div class="select-swap">
+                                    <div class="select-size-element">
+                                        <a class="choose" onclick="change('S')" id="size-S" href="#">
+                                            <p>S</p>
+                                        </a>
+                                    </div>
+
+                                    <div class="select-size-element">
+                                        <a onclick="change('M')" id="size-M" href="#">
+                                            <p>M</p>
+                                        </a>
+
+                                    </div>
+
+                                    <div class="select-size-element">
+                                        <a onclick="change('L')" id="size-L" href="#">
+                                            <p>L</p>
+                                        </a>
+
+                                    </div>
+
+                                    <div class="select-size-element">
+                                        <a onclick="change('XL')" id="size-XL" href="#">
+                                            <p>XL</p>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="select-quantity">
+
+                        </div>
+
+                        <form class="add-cart" method="post" action="/addToCart">
+                            <input type="hidden" name="cart_product_id" value="{{ data._id }}">
+                            <input type="hidden" name="cart_product_url" value="{{ data.product_url }}">
+                            <input type="hidden" name="cart_product_name" value="{{ data.product_name }}" >
+                            <input type="hidden" name="cart_product_price" value="{{ data.product_price }}" >
+                            <input type="hidden" name="cart_product_size" value="S" id="size" >
+                            <button id="addcart" class="add-product btn-dark">Thêm vào giỏ</button>
+                        </form>
+
+                        <div class="product-desc">
+                            <div class="product-desc-title">
+                                <h2>Mô tả</h2>
+                            </div>
+
+                            <div class="product-desc-content">
+                                <p>🔹 Bảng size Outerity<br>S : Dài 69 Rộng 52.5 | 1m50 - 1m65, 45 - 55Kg
+                                    <br>M : Dài 73 Rộng 55 | 1m60 - 1m75, 50 - 65Kg
+                                    <br>L: Dài : 76.5 Rộng: 57.5 | 1m7 - 1m8, 65Kg - 80Kg
+                                    <br>👉 Nếu chưa biết lựa size bạn có thể inbox để được chúng mình tư vấn.
+                                </p>
+                                {{!-- <p>🔹 Chính sách đổi trả Outerity.
+                                    <br>– Miễn phí đổi hàng cho khách mua ở Outerity trong trường hợp bị lỗi từ nhà sản
+                                    xuất, giao nhầm hàng, nhầm size.
+                                    <br>- Quay video mở sản phẩm khi nhận hàng, nếu không có video unbox, khi phát hiện
+                                    lỗi phải báo ngay cho Outerity trong 1 ngày tính từ ngày giao hàng thành công. Qua 1
+                                    ngày chúng mình không giải quyết khi không có video unbox.
+                                    <br>– Sản phẩm đổi trong thời gian 3 ngày kể từ ngày nhận hàng
+                                    <br>– Sản phẩm còn mới nguyên tem, tags, sản phẩm chưa giặt và không dơ bẩn, hư hỏng
+                                    bởi những tác nhân bên ngoài cửa hàng sau khi mua hàng.
+                                    <br>
+                                    <br>👉 Đặc biệt:
+                                    <br>– Tất cả sản phẩm ver 3.0 sẽ được hỗ trợ trả hàng hoàn tiền trong vòng 05 ngày
+                                    kể từ ngày nhận hàng nếu có trải nghiệm không tốt, không hài lòng về sản phẩm
+                                    <br>– Chấp nhận trả hàng hoàn tiền với sản phẩm đã qua sử dụng, không còn nguyên tag
+                                    tuy nhiên sản phẩm phải còn nguyên vẹn, không bị rách, bung chỉ, bạc màu do quá
+                                    trình sử dụng --}}
+                                    🔹<br>Liên hệ: <a href="tel:0886688909" class="non-decoration"> 08886688909</a>
+                                    <br>/ Web /<a href="https://outerity.com/" class="non-decoration"> Outerity.com</a> 
+                                    <br>/ IG / @Outerity.sg
+                                    <br>/ FB / Outerity
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                
+                <div id="list-related-products">
+                    <div class="title">
+                        <h2>Sản phẩm liên quan </h2>
+                    </div>
+
+                    <div class="product-list">
+                        <div class="product">
+                            <div class="product-pic">
+                                <img class="pic" src="./img/product.jpg" alt="">
+                                <div class="product-sale">
+                                    <span>-18%</span>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-name"><a href="#"></a>ACUTE COLOR TEE / BLACK COLOR</h3>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>188,000đ</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-pic">
+                                <img class="pic" src="./img/product.jpg" alt="">
+                                <div class="product-sale">
+                                    <span>-18%</span>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-name"><a href="#"></a>ACUTE COLOR TEE / BLACK COLOR</h3>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>188,000đ</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-pic">
+                                <img class="pic" src="./img/product.jpg" alt="">
+                                <div class="product-sale">
+                                    <span>-18%</span>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-name"><a href="#"></a>ACUTE COLOR TEE / BLACK COLOR</h3>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>188,000đ</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-pic">
+                                <img class="pic" src="./img/product.jpg" alt="">
+                                <div class="product-sale">
+                                    <span>-18%</span>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-name"><a href="#"></a>ACUTE COLOR TEE / BLACK COLOR</h3>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>188,000đ</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product">
+                            <div class="product-pic">
+                                <img class="pic" src="./img/product.jpg" alt="">
+                                <div class="product-sale">
+                                    <span>-18%</span>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <h3 class="product-name"><a href="#"></a>ACUTE COLOR TEE / BLACK COLOR</h3>
+                                <div class="product-prices">
+                                    <p class="box-prices">
+                                        <span>188,000đ</span>
+                                        <span class="prices-del">230,000đ</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+         {{>footer}}
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top">TOP</button>
+
+    </div>
+
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        let history = "S";
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        function change(sl){
+            document.getElementById(`size-${history}`).classList.remove('choose')
+            document.getElementById(`size-${sl}`).classList.add('choose')
+            history = sl;
+            document.getElementById("size").value = sl;
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        
+    </script>
+
+</body>
+
+</html>

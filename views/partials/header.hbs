@@ -1,0 +1,162 @@
+<div id="header">
+    <a href="/" class="logo-pic">
+        <img class="logo" src="https://file.hstatic.net/200000312481/file/logoo_bf8b94d84c4242109555c773681d1a61.png" alt="">
+    </a>
+    <div id="menu">
+        <div class="item menu-product">
+            <a href="/">Trang chủ</a>
+        </div>
+
+        <div class="item menu-product">
+            <a href="/listProduct" class="name-product">Sản phẩm</a>
+            <div class="mega-menu">
+                <div class="main-menu">
+                    <div class="menu-item">
+                        <a href="#" class="menu-item-title">Nhu cầu</a>
+                        <ul>
+                            <li>
+                                <a href="#">Đồ thu - đông
+                                    <span class="menu-item-desc">Winter Collection</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#">Mặc nhà & Mặc trong
+                                    <span class="menu-item-desc">Homewear & Underwear</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Mặc hằng ngày
+                                    <span class="menu-item-desc">Casualwear</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Đồ thể thao
+                                    <span class="menu-item-desc">Activewear</span>
+                                </a>
+                            </li>
+                            <li><a href="#">Phụ kiện
+                                    <span class="menu-item-desc">Accessories</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="#" class="menu-item-title">Danh mục</a>
+                        <ul>
+                            <li>
+                                <a href="#">Áo Nam
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#">Quần Nam
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Phụ kiện
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Tất cả sản phẩm
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="menu-item">
+                        <a href="#" class="menu-item-title">Bộ sưu tập</a>
+                        <ul>
+                            <li>
+                                <a href="#">Proudly Vietnam
+                                    <span class="menu-item-desc">Tự hào từ những điều nhỏ bé</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="#">Vũ trụ áo Marvel
+
+                                    <span class="menu-item-desc">Ưu đãi trải nghiệm hấp dẫn</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Clean Vietnam
+
+                                    <span class="menu-item-desc">Casualwear</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Đồ thể thao
+                                    <span class="menu-item-desc">Sự kết hợp giữa Coolmate & Vietmax</span>
+                                </a>
+                            </li>
+                            <li><a href="#">Coolmate Basics
+
+                                    <span class="menu-item-desc">BST giá rẻ - chất lượng</span>
+                                </a>
+                            </li>
+                            <li><a href="#">Sản phẩm bền vững
+
+                                    <span class="menu-item-desc">Sản phẩm thân thiện với môi trường</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="item menu-product">
+            <a href="/view">Giới thiệu</a>
+        </div>
+        <div class="item menu-product">
+            <a href="/store">Cửa hàng</a>
+        </div>
+    </div>
+    <div id="actions">
+        <div class="user">
+
+             {{#ifCond name ""}}
+                <img class="icon" src="./img/user.png" alt="">
+                <div class="subActions">
+                    <ul class="user-option">
+                    <li><a href="/login">Đăng nhập</a></li>
+                    <li><a href="/register">Đăng ký</a></li>
+                    <!-- <li><a href="">Thoát</a></li> -->
+                </ul>
+                </div>
+            {{else}}
+                <p class="icon">{{ name }}</p>
+                <div class="subActions">
+                <ul class="user-option">
+                    <li><a href="/account">Tài khoản</a></li>
+                    <li><a href="/cart">Giỏ hàng</a></li>
+                    <li><a href="/bill">Lịch sử mua hàng</a></li>
+                    <li><a href="/signout">Đăng xuất</a></li>
+                </ul>
+                </div>
+            {{/ifCond}}
+                
+            
+        </div>
+
+        {{#ifCond name ""}}
+            <a href="/login" class="cart">
+                <img class="icon" src="./img/cart.png" alt="">
+            </a>
+        {{else}}
+            <a href="/cart" class="cart">
+                <img class="icon" src="./img/cart.png" alt="">
+            </a>
+        {{/ifCond}}
+    </div>
+</div>
+
+<style>
+   
+
+</style>

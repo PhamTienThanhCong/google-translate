@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        {{>header}}
+
+
+        <div id="slider">
+            <div class="mainContent">
+                <div class="layout-account">
+                    <div class="row">
+                        <div class="createAccount-heading">
+                            <h1 class="heading">Tạo tài khoản</h1>
+                            <!-- <span class="line"></span> -->
+                        </div>
+
+                        <div class="information">
+                            <div class="userbox">
+                                <form action="/registerProcessing" method="post">
+                                    <div class="form">
+                                        <input type="text" id="fname" name="fullname" placeholder="Họ và tên" ><br>
+                                    </div>
+
+                                    <div class="form">
+                                        <input class="radio" type="radio" name="gender" id="female">
+                                        <label for="female">Nữ</label>
+
+                                        <input class="radio" type="radio" name="gender" id="male">
+                                        <label for="male">Nam</label>
+
+                                    </div>
+
+                                    <div class="form">
+                                        <input type="date" id="date" name="birthday" style="opacity: 0.6;"><br>
+
+                                    </div>
+
+                                    <div class="form">
+                                        <input type="email" id="email" name="email" placeholder="Email"><br>
+
+                                    </div>
+
+                                    <div class="form">
+                                        <input type="tel" id="tel" name="phoneNumber" pattern="[0-9]{10}" placeholder="Số điện thoại"><br>
+
+                                    </div>
+
+                                     <div class="form">
+                                        <input type="text" id="address" name="address" placeholder="Địa chỉ"><br>
+
+                                    </div>
+
+                                    <div class="form">
+                                        <input type="password" id="pass" name="password" placeholder="Mật khẩu"><br>
+
+                                    </div>
+
+                                    <div class="btnScb">
+                                        <input class="btn" type="submit" value="Đăng ký">
+                                    </div>
+
+                                    <div class="backHome">
+                                        <a href="/login">
+                                        <i class="ti-arrow-left"></i>
+                                        Quay lại đăng nhập
+                                        </a>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        {{>footer}}
+
+    </div>
+
+
+</body>
+
+</html>
