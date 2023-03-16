@@ -2341,3 +2341,23 @@
 {"message":"find_word","level":"info"}
 {"message":"Sat Nov 26 2022 23:22:54 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
 {"message":"Sat Nov 26 2022 23:22:56 GMT+0700 (Indochina Time): GET /sw.js","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Error while attempting to connect to database:","level":"error"}
+{"code":"ETIMEOUT","syscall":"queryTxt","hostname":"cluster0.cpg1wwf.mongodb.net","level":"error"}
+{"message":"Thu Mar 16 2023 14:04:53 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Error while attempting to connect to database:","level":"error"}
+{"code":"ETIMEOUT","syscall":"querySrv","hostname":"_mongodb._tcp.cluster0.cpg1wwf.mongodb.net","level":"error"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:39 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:40 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:43 GMT+0700 (Indochina Time): GET /","level":"info"}
+{"message":"find_word","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:43 GMT+0700 (Indochina Time): GET /style.css","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:43 GMT+0700 (Indochina Time): GET /favicon.ico","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:47 GMT+0700 (Indochina Time): GET /find?type=1&word=hi&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:48 GMT+0700 (Indochina Time): GET /find?type=1&word=hi&language=6379f101f6f823267cb59c9d","level":"info"}
+{"message":"Thu Mar 16 2023 21:32:56 GMT+0700 (Indochina Time): GET /find?type=1&word=xin%20ch%C3%A0o&language=6379f101f6f823267cb59c9d","level":"info"}
