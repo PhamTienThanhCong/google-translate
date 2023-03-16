@@ -1,6 +1,6 @@
 const logger = require('../utils/logger');
 const my_function = require('./function');
-const Vietnamese = require('../models/vietnam');
+const Vietnamese = require('../models/korean');
 const Foreign_language = require('../models/foreign_language');
 const Translate = require('../models/translate');
 const Language  = require('../models/language');

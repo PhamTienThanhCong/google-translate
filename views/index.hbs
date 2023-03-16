@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm từ điển</title>
+    <title>사전 추가</title>
     <!-- <link rel="stylesheet" href="/css/index.css"> -->
     <script src="https://kit.fontawesome.com/c71231073e.js" crossorigin="anonymous"></script>
 
@@ -78,33 +78,33 @@ body{
 
 <body>
     <a href="/all-list">
-        <button class="btn-back"><<< Danh sách từ điển</button>
+        <button class="btn-back"><<< 사전 목록</button>
     </a>
     <form class="container" method="post" action="./save">
         <h1>
-            Thêm từ điển mới
+            새 사전 추가
         </h1>
         <!-- <div class="form-group">
             <button type="button" id="translate" class="btn btn-primary">Vietnamese <=> English</button>
         </div> -->
         <div class="form-group">
             <input type="hidden" name="type" value="1">
-            <input type="text" name="text1" class="form-control" style="height: 34px" placeholder="Tiếng việt">
+            <input type="text" name="text1" class="form-control" style="height: 34px" placeholder="한국어">
             <i class="fa-solid fa-arrows-left-right"></i>
-            <input type="text" name="text2" class="form-control" style="height: 34px" placeholder="Tiếng Nước ngoài">
+            <input type="text" name="text2" class="form-control" style="height: 34px" placeholder="외국어">
         </div>
         <div class="form-group">
             <select class="form-control" name="language" id="" style="width: 92%">
                 {{#each languages}}
-                    <option value="{{this._id}}">Tiếng {{this.name}}</option>
+                    <option value="{{this._id}}">{{this.name}}</option>
                 {{/each}}
             </select>
         </div>
         <div class="form-group">
-            <textarea type="text" id="" name="description" class="form-control" placeholder="Mô tả ngôn ngữ" style="width:92%"></textarea>
+            <textarea type="text" id="" name="description" class="form-control" placeholder="언어 설명" style="width:92%"></textarea>
         </div>
         <div class="form-group">
-            <button id="translate" class="btn btn-primary">Thêm vào bộ từ điển</button>
+            <button id="translate" class="btn btn-primary">사전에 추가</button>
         </div>
     </form>
 </body>

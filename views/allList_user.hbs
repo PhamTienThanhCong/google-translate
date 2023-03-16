@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>danh sách từ điển</title>
+    <title>사전 목록</title>
 </head>
 
 <style>
@@ -107,13 +107,13 @@
 
 {{!-- <link rel="stylesheet" href="/css/allList.css"> --}}
 <body>
-    <h1 style="text-align: center; margin-top: 10px;">Danh sách từ điển</h1>
+    <h1 style="text-align: center; margin-top: 10px;">사전 목록</h1>
     <div class="container">
         <div class="header-search">
             <form action="/all-list" class="search-form" method="GET">
-                <input type="text" name="keyword" placeholder="Nhập từ cần tìm kiếm" value="{{keyword}}">
-                <button class="btn">Tìm kiếm</button>
-                <a href="/"><button class="btn" style="background-color: rgb(38, 173, 252);" type="button">Quay lại tìm kiếm</button></a>
+                <input type="text" name="keyword" placeholder="검색에서 입력하십시오" value="{{keyword}}">
+                <button class="btn">찾다</button>
+                <a href="/"><button class="btn" style="background-color: rgb(38, 173, 252);" type="button">검색으로 돌아갑니다</button></a>
             </form>
         </div>
         <div class="content">
@@ -127,15 +127,15 @@
             <div class="main-content">
                 <div class="main-header">  
                     <a href="#">
-                        <button class="btn-type active">Tất Cả<button>
+                        <button class="btn-type active">모두<button>
                     </a>             
                     {{#each languages}}
                         <a href="#">
-                            <button class="btn-type">Việt - {{this.name}}<button>
+                            <button class="btn-type">한국인 - {{this.name}}<button>
                         </a>
                     {{/each}}
                 </div>
-                <b style="color: red; font-size: 19px;" id="id_tv">Quản lý từ vựng</b>
+                <b style="color: red; font-size: 19px;" id="id_tv">어휘 관리</b>
                 <ul class="list-diction"  id="list-diction">
                 </ul>
             </div>
@@ -175,7 +175,7 @@
         })
     }
     function find_world(world){
-        document.getElementById("id_tv").innerHTML = `Từ: ${world}`;
+        document.getElementById("id_tv").innerHTML = `사전: ${world}`;
         last_word = world;
         $.ajax({
             type: "GET",
@@ -190,20 +190,20 @@
                 let root = document.getElementById("list-diction");
                 data = response
                 if (response.length == 0){
-                    root.innerHTML = 'Từ điển trống ?';
+                    root.innerHTML = '드럼 사전 ?';
                 }else{
                     root.innerHTML = '';
                     for (let i = 0 ; i < response.length ; i++){
                         if (response[i].description == null){
-                            response[i].description = "Trống"
+                            response[i].description = "북"
                         }
                         root.innerHTML += `
                             <li id="${response[i].id_trans}">
-                                <b>Nghĩa: ${response[i].word}</b> 
+                                <b>수단: ${response[i].word}</b> 
                                 <br>
-                                <span>- Giải thích: ${response[i].description}</span>
+                                <span>- 설명하다: ${response[i].description}</span>
                                 <br>
-                                Hành động: <a href="#" onclick="delete_action('${response[i].id_trans}')">Xóa từ điển</a>
+                                행동: <a href="#" onclick="delete_action('${response[i].id_trans}')">디스플레이 사전</a>
                             </li>
                         `;
                     }

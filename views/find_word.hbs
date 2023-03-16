@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Tra cứu từ điển</title>
+    <title>조회 사전</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- FontAweome CDN Link for Icons -->
@@ -151,47 +151,47 @@
   </style>
   <body>
     <div class="wrapper">
-      <header>Tra cứu từ điển</header>
+      <header>조회 사전</header>
       <form action="#" id="form_submit">
         <div class="amount">
-          <p>Nhập Từ Cần Tra Cứu</p>
+          <p>검색어를 입력하세요</p>
           <input type="hidden" value="1" id="type_trans">
-          <input type="text" name="text1" placeholder="Nhập Từ Cần Tra Cứu">
+          <input type="text" name="text1" placeholder="검색어를 입력하세요">
         </div>
         <div class="drop-list">
           <div class="from">
-            <p id="text-left">From</p>
+            <p id="text-left">시작하다</p>
             <div class="select-box">
               <select>
                 <option>
-                    Tiếng Việt
+                    한국
                 </option>
               </select>
             </div>
           </div>
           <div class="icon" id="type_icon" onclick="change_langue()"><i class="fa-solid fa-arrow-right"></i></div>
           <div class="to">
-            <p id="text-right">To</p>
+            <p id="text-right">다음</p>
             <div class="select-box">
               <select name="language" id="list-language">
                 {{#each languages}}
-                    <option value="{{this._id}}">Tiếng {{this.name}}</option>
+                    <option value="{{this._id}}">{{this.name}}</option>
                 {{/each}}
               </select>
             </div>
           </div>
         </div>
-        <p style="margin-top: 10px; margin-bottom: -10px;">Kết quả</p>
+        <p style="margin-top: 10px; margin-bottom: -10px;">결과</p>
         <ul class="exchange-rate">  
             
         </ul>
-        <button>Tra cứu</button>
+        <button>조회 사전</button>
       </form>
     </div>
 
     <div class="button-change-page">
-        <a class="button-link" href="/login">Truy cập trang admin</a>
-        <a class="button-link" href="/list-word">Danh sách từ điển</a>
+        <a class="button-link" href="/login">관리자 페이지로 이동</a>
+        <a class="button-link" href="/list-word">사전 목록</a>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -204,13 +204,13 @@
         let type_trans = document.getElementById("type_trans");
         if (type_trans.value == 1){
             type_trans.value = 2;
-            document.getElementById("text-left").innerText = "To";
-            document.getElementById("text-right").innerText = "From";
+            document.getElementById("text-left").innerText = "다음";
+            document.getElementById("text-right").innerText = "시작하다";
         }else{
             type_trans.value = 1;
             type = `<i class="fa-solid fa-arrow-right"></i>`;
-            document.getElementById("text-left").innerText = "From";
-            document.getElementById("text-right").innerText = "To";
+            document.getElementById("text-left").innerText = "시작하다";
+            document.getElementById("text-right").innerText = "다음";
         }
         document.getElementById("type_icon").innerHTML = type;
     }
@@ -233,12 +233,12 @@
             },
             success: function(response){
                 if (response.length == 0){
-                    root_langue.innerHTML = `<li>Không tìm thấy từ này</li> <a href="/login">Truy cập trang admin</a>`;
+                    root_langue.innerHTML = `<li>이 단어를 찾을 수 없습니다</li> <a href="/login">관리자 페이지로 이동</a>`;
                     swal({
-                        title: "Không tìm thấy chữ",
-                        text: `Từ ${text} không có trong từ điển của chúng tôi`,
+                        title: "단어를 찾을 수 없습니다.",
+                        text: `이 ${text} 우리 사전에 없다`,
                         icon: "error",
-                        button: "Trở lại",
+                        button: "반품",
                     });
                     
                 }else{
@@ -248,7 +248,7 @@
                             root_langue.innerHTML += `
                             <li class="trans-list">
                                 <b>${response[i].word}</b>
-                                <p>- Giải thích: ${ response[i].description }</p>
+                                <p>- 설명하다: ${ response[i].description }</p>
                             </li>
                         `
                         }else{
@@ -259,7 +259,7 @@
                         `
                         }
                     }
-                    root_langue.innerHTML += `<a href="/login">Truy cập trang admin</a>`;
+                    root_langue.innerHTML += `<a href="/login">관리자 페이지로 이동</a>`;
                 }
             }
         })

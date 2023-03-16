@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List Ngôn ngữ</title>
+    <title>언어 목록</title>
 </head>
 <body>
     <style>
@@ -71,15 +71,15 @@
     </style>
 </body>
     <a href="/all-list">
-        <button class="btn-back"><<< Danh sách từ điển</button>
+        <button class="btn-back"><<< 사전 목록</button>
     </a>
     <form action="/create-langue-action" method="POST" class="form-add-langue">
         <h1>
-            Trang thêm trường ngôn ngữ mới
+            새로운 어학원 페이지
         </h1>
-        <input type="text" name="name" placeholder="Tên ngôn ngữ">
-        <input type="text" name="description" placeholder="Mô tả">
-        <input type="submit" value="Thêm" style="width:100%; cursor:pointer">
+        <input type="text" name="name" placeholder="언어 이름">
+        <input type="text" name="description" placeholder="설명하다">
+        <input type="submit" value="언어 추가" style="width:100%; cursor:pointer">
     </form>
 
     <!-- list langue view -->
@@ -88,9 +88,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Tên ngôn ngữ</th>
-                    <th>Mô tả</th>
-                    <th>Thao tác</th>
+                    <th>언어 이름</th>
+                    <th>설명하다</th>
+                    <th>작업</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,7 +99,7 @@
                     <td>{{this.name}}</td>
                     <td>{{this.description}}</td>
                     <td>
-                        <a href="/deleteLanguage/{{this._id}}">Xóa</a>
+                        <a href="/deleteLanguage/{{this._id}}">삭제</a>
                     </td>
                 </tr>
                 {{/each}}
