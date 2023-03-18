@@ -2753,3 +2753,7 @@
 {"message":"Sat Mar 18 2023 09:42:14 GMT+0700 (Indochina Time): GET /find?type=1&word=%ED%95%9C%EA%B5%AD&language=6413910e3881690034b938eb","level":"info"}
 {"message":"API is now running on port in mode","level":"info"}
 {"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"API is now running on port in mode","level":"info"}
+{"message":"Successfully connected to mongodb+srv://dokimlong:6OYrS60L74uhcCyp@cluster0.cpg1wwf.mongodb.net/dictionary?retryWrites=true&w=majority MongoDB cluster in development mode.","level":"info"}
+{"message":"Sat Mar 18 2023 09:44:02 GMT+0700 (Indochina Time): GET /find?type=1&word=%ED%95%9C%EA%B5%AD&language=6413910e3881690034b938eb","level":"info"}
+{"message":"Sat Mar 18 2023 09:44:05 GMT+0700 (Indochina Time): GET /find?type=1&word=%ED%95%9C%EA%B5%AD&language=6413910e3881690034b938eb","level":"info"}
