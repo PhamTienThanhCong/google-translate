@@ -16,7 +16,7 @@ app.use(logger_request_middleware);
 app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(session({
   secret: 'abcdefg',

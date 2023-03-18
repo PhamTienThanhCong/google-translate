@@ -1,93 +1,138 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    /* height: 100vh; */
-}
-.container h1{
-    font-size: 3rem;
-    color: #333;
-    margin-bottom: 30px;
-}
-.form-group{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem 0;
-}
-.form-group-2{
-    justify-content: center;
-}
-.form-control {
-    width: 40%;
-    margin: 0 auto;
-    display: block;
-    padding: 0.5rem;
-    font-size: 18px;
-    outline: none;
-    height: 100px;
-    /* textarea resize only height */
-    resize: vertical;
-}
-.form-control-2{
-    width: 40%;
-    margin: 0 auto;
-    display: block;
-    padding: 0;
-    height: 100px;
-    position: relative;
-}
-.form-control-2 textarea{
-    width: 100%;
-    margin: 0;
-    padding: 0.5rem;
-}
-.btn{
-    padding: 0.5rem 1rem;
-    font-size: 18px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.btn-primary{
-    background-color: rgb(51, 51, 51);
-    color: #fff;
-}
-#description{
-    margin-top: 20px;
-    font-size: 19px;
-}
-#description b{
-    color: rgb(133, 37, 37);
-}
-#list-same{
-    margin-top: 15px;
-    font-size: 18px;
-}
-#list-same li{
-    margin-top: 5px;
-    margin-left: 30px;
-}
-.form-group select{
-    height: auto;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
 }
 body{
-    padding: 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+padding: 0 10px;
+background: #675AFE;
 }
-#list-languge{
-    padding: 0;
-    margin: 0;
-    margin-top: -70px;
-    position: absolute;
-    top: 0;
-    left: 0;
+::selection{
+color: #fff;
+background: #675AFE;
+}
+.wrapper{
+width: 50%;
+min-width: 370px;
+padding: 30px;
+border-radius: 7px;
+background: #fff;
+box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+}
+.wrapper header{
+font-size: 28px;
+font-weight: 500;
+text-align: center;
+}
+.wrapper form{
+margin: 40px 0 20px 0;
+}
+form :where(input, select, button){
+width: 100%;
+outline: none;
+border-radius: 5px;
+border: none;
+}
+form p{
+font-size: 18px;
+margin-bottom: 5px;
+}
+form input{
+height: 50px;
+font-size: 17px;
+padding: 0 15px;
+border: 1px solid #999;
+}
+form input:focus{
+padding: 0 14px;
+border: 2px solid #675AFE;
+}
+form .drop-list{
+width: 100%;
+display: flex;
+margin-top: 20px;
+align-items: center;
+justify-content: space-between;
+}
+.drop-list .select-box{
+display: flex;
+
+min-width: 115px;
+height: 45px;
+align-items: center;
+border-radius: 5px;
+justify-content: center;
+border: 1px solid #999;
+}
+.to, .from{
+    width: 40%;
+}
+.select-box img{
+max-width: 21px;
+}
+.select-box select{
+width: 100%;
+font-size: 16px;
+background: none;
+padding: 0 10px;
+}
+.select-box select::-webkit-scrollbar{
+width: 8px;
+}
+.select-box select::-webkit-scrollbar-track{
+background: #fff;
+}
+.select-box select::-webkit-scrollbar-thumb{
+background: #888;
+border-radius: 8px;
+border-right: 2px solid #ffffff;
+}
+.drop-list .icon{
+cursor: pointer;
+margin-top: 30px;
+font-size: 22px;
+}
+form .exchange-rate{
+font-size: 17px;
+margin: 20px 0 30px;
+/* remove dot */
+list-style: none;
+max-height: 150px;
+overflow-y: scroll;
+}
+form button{
+height: 52px;
+color: #fff;
+font-size: 17px;
+cursor: pointer;
+background: #675AFE;
+transition: 0.3s ease;
+}
+form button:hover{
+background: #4534fe;
+}
+.trans-list{
+    border-left: 2px solid #675AFE;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.button-change-page{
+  position: fixed;
+  top : 10px;
+  right: 10px;
+}
+.button-link{
+  text-decoration: none;
+  color: #fff;
+  background: #675AFE;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: 0.3s ease;
 }

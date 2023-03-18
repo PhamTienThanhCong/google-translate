@@ -1,30 +1,128 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사전 목록</title>
-    <link rel="stylesheet" href="/css/allList.css">
+    <title>관리자 관리 사전</title>
 </head>
 
-{{!-- <link rel="stylesheet" href="/css/allList.css"> --}}
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    padding: 0 50px;
+    margin-top: 30px;
+}
+.content{
+    width: 100%;
+    display: flex;
+}
+.nav-slider{
+    width: 35%;
+    background-color: #f1f1f1;
+}
+.nav-slider ul{
+    list-style: none;
+    padding: 0 10px;
+    height: calc(100vh - 200px);
+    overflow: scroll;
+}
+.nav-slider ul li{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.nav-slider ul li a{
+    /* tag a to p */
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    display: inline-block;
+}
+/* animation */
+.nav-slider ul li a:hover{
+    color: red;
+}
+.main-content{
+    width: 65%;
+    background-color: #e9e9e9;
+}
+.search-form{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.search-form input{
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.btn{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ccc;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.btn-type{
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.main-header{
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.main-header a{
+    text-decoration: none;
+    color: black;
+}
+.main-content{
+    padding: 10px;
+    height: calc(100vh - 200px);
+    overflow: scroll;
+}
+.list-diction{
+    list-style: none;
+    padding-left: 40px;
+}
+.list-diction li{
+    font-size: 17px;
+    /* margin-bottom: 10px; */
+    padding: 10px 0;
+    border-bottom: 1px dotted rgb(95, 90, 90);
+}
+.active{
+    background-color: rgb(224, 105, 105);
+    border-radius: 3px;
+}
+</style>
+
 <body>
-    <h1 style="text-align: center; margin-top: 10px;">사전 목록</h1>
+    <h1 style="text-align: center; margin-top: 10px;">관리자 언어 관리 페이지</h1>
     <div class="container">
         <div class="header-search">
             <form action="/all-list" class="search-form" method="GET">
-                <input type="text" name="keyword" placeholder="검색에서 입력하십시오" value="{{keyword}}">
-                <button class="btn">찾다</button>
-                <a href="/"><button class="btn" style="background-color: rgb(38, 173, 252);" type="button">검색으로 돌아갑니다</button></a>
+                <input type="text" name="keyword" placeholder="검색어 입력하세요" value="">
+                <button class="btn">검색</button>
+                <a href="/create"><button class="btn" type="button">단어/어휘 추가</button></a>
+                <a href="/create-langue"><button class="btn" type="button">번역 추가</button></a>
+                <a href="/logout"><button class="btn" style="float: right; background-color: red" type="button">로그 아웃</button></a>
             </form>
         </div>
         <div class="content">
             <div class="nav-slider">
                 <ul>
-                    {{#each data}}
-                        <li id="{{this._id}}"><a href="#" onclick="find_world('{{this.word}}')">{{this.word}}</a></li>
-                    {{/each}}
+                        <li id="6413905b3881690034b938e5"><a href="#" onclick="find_world('한국어')">한국어</a></li>
+                        
                 </ul>
             </div>
             <div class="main-content">
@@ -32,11 +130,9 @@
                     <a href="#">
                         <button class="btn-type active">모두<button>
                     </a>             
-                    {{#each languages}}
                         <a href="#">
-                            <button class="btn-type">한국인 - {{this.name}}<button>
+                            <button class="btn-type">한국 - 베트남어<button>
                         </a>
-                    {{/each}}
                 </div>
                 <b style="color: red; font-size: 19px;" id="id_tv">어휘 관리</b>
                 <ul class="list-diction"  id="list-diction">
@@ -52,9 +148,7 @@
     let last_word = "";
     let list_language = [
         '0',
-        {{#each languages}}
-            "{{this._id}}",
-        {{/each}}
+            "6413910e3881690034b938eb",
     ];
     function change_language(number){
         language = number;
@@ -93,7 +187,7 @@
                 let root = document.getElementById("list-diction");
                 data = response
                 if (response.length == 0){
-                    root.innerHTML = '드럼 사전 ?';
+                    root.innerHTML = '단어가 없음 ?';
                 }else{
                     root.innerHTML = '';
                     for (let i = 0 ; i < response.length ; i++){
@@ -102,11 +196,11 @@
                         }
                         root.innerHTML += `
                             <li id="${response[i].id_trans}">
-                                <b>수단: ${response[i].word}</b> 
+                                <b>뜻: ${response[i].word}</b> 
                                 <br>
-                                <span>- 설명하다: ${response[i].description}</span>
+                                <span>- 설명: ${response[i].description}</span>
                                 <br>
-                                행동: <a href="#" onclick="delete_action('${response[i].id_trans}')">디스플레이 사전</a>
+                                삭제: <a href="#" onclick="delete_action('${response[i].id_trans}')">사전 지우기</a>
                             </li>
                         `;
                     }

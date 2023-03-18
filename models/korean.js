@@ -5,4 +5,4 @@ const TaskSchema = new Schema({
   word: String
 });
 
-module.exports = mongoose.model('vietnameses', TaskSchema);
+module.exports = mongoose.model('koreans', TaskSchema);

@@ -1,0 +1,59 @@
+.form-add-langue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+}
+.form-add-langue input{
+    margin: 10px 0;
+    width: calc(100% - 10px);
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-add-langue button{
+    margin: 10px 0;
+}
+/* form add langue */
+
+/* list langue view using table */
+.list-langue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+}
+.list-langue table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.list-langue th, .list-langue td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.list-langue tr:nth-child(even){background-color: #f2f2f2;}
+.list-langue tr:hover {background-color: #ddd;}
+.list-langue th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+/* list langue view using table */
+.btn-back{
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    background-color: rgb(87, 168, 245);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
