@@ -93,7 +93,7 @@
             },
             success: function(response){
                 if (response.length == 0){
-                    root_langue.innerHTML = `<li>이 단어를 찾을 수 없습니다</li> <a href="/login">Góp ý ngay</a>`;
+                    root_langue.innerHTML = `<li>이 단어를 찾을 수 없습니다</li> <a href="/login">지금 코멘트</a>`;
                     swal({
                         title: "단어를 찾을 수 없습니다.",
                         text: `이 ${text} 우리 사전에 없다`,
@@ -109,7 +109,7 @@
                             <li class="trans-list">
                                 <b>${response[i].word}</b>
                                 <p>- 설명하다: ${ response[i].description }</p>
-                                <p><i class="fa-regular fa-star"></i> Đánh Giá: ${ response[i].vote_up } <i class="fa-regular fa-thumbs-up"></i> | ${ response[i].vote_down } <i class="fa-regular fa-thumbs-down"></i> | <a href="">Đánh giá ngay <i class="fa-regular fa-handshake"></i></a></p>
+                                <p><i class="fa-regular fa-star"></i> 평가하다: ${ response[i].vote_up } <i class="fa-regular fa-thumbs-up"></i> | ${ response[i].vote_down } <i class="fa-regular fa-thumbs-down"></i> | <a href="">지금 평가 <i class="fa-regular fa-handshake"></i></a></p>
                             </li>
                         `
                         }else{
