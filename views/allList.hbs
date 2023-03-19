@@ -9,14 +9,14 @@
 </head>
 
 <body>
-    <h1 style="text-align: center; margin-top: 10px;">관리자 전용 워드 관리 페이지</h1>
+    <h1 style="text-align: center; margin-top: 10px;">관리자 언어 관리 페이지</h1>
     <div class="container">
         <div class="header-search">
             <form action="/all-list" class="search-form" method="GET">
                 <input type="text" name="keyword" placeholder="검색어를 입력하세요" value="{{keyword}}">
-                <button class="btn">찾다</button>
-                <a href="/create"><button class="btn" type="button">사전 추가</button></a>
-                <a href="/create-langue"><button class="btn" type="button">번역 필드 추가</button></a>
+                <button class="btn">검색</button>
+                <a href="/create"><button class="btn" type="button">단어/어휘 추가</button></a>
+                <a href="/create-langue"><button class="btn" type="button">번역 추가</button></a>
                 <a href="/logout"><button class="btn" style="float: right; background-color: red" type="button">로그 아웃</button></a>
             </form>
         </div>
