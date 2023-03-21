@@ -34,7 +34,7 @@
         <div class="form-group">
             <select class="form-control" name="language" id="" style="width: 92%">
                 {{#each languages}}
-                    <option value="{{this._id}}">{{this.name}}</option>
+                    <option value="{{this._id}}&{{this.name}}">{{this.name}}</option>
                 {{/each}}
             </select>
         </div>

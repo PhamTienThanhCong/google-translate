@@ -1,21 +1,13 @@
-const Foreign_language = require('../models/word');
 const Translate = require('../models/translate');
 const Language = require('../models/language');
-
-// const loginCheck(req, res){
-//     if (!req.session.daDangNhap) {
-//         res.redirect('/login');
-//         // exit app
-//         process.exit(1);
-//     }
-// }
 
 const allList = async (req, res) => {
     let { keyword } = req.query;
     if (keyword == undefined) {
         keyword = "";
     }
-    let data = [];
+    // Lấy data từ database translate sao cho korea không xuất hiện trùng nhau
+    const data = await Translate.find({ korea: { $regex: keyword, $options: 'i' } }).distinct('korea');
     let languages = await Language.find({});
     res.render('allList', { data, keyword, languages: languages });
 }
@@ -28,9 +20,29 @@ const index = async (req, res) => {
 
 // function get data from post request
 const add = async (req, res) => {
-    // get data from post request
     const { text1, text2, language, description } = req.body;
-    res.send({ text1, text2, language, description });
+    const language_id = language.split('&')[0];
+    const language_name = language.split('&')[1];
+    const text1_trim = text1.trim().replace(/\s\s+/g, ' ').toLowerCase();
+    const text2_trim = text2.trim().replace(/\s\s+/g, ' ').toLowerCase();
+    if (text1_trim == "" || text2_trim == "") {
+        return res.redirect('/create');
+    }
+    const TranslateText = await Translate.findOne({ korea: text1_trim, foreign_languages: text2_trim, language: language_id });
+    
+    if (!TranslateText) {
+        const newTranslate = new Translate({
+            korea: text1_trim,
+            foreign_languages: text2_trim,
+            language: language_id,
+            language_name: language_name,
+            description: description,
+        });
+        try {
+            await newTranslate.save();
+        } catch (error) {}
+    }
+    return res.redirect('/create');
 }
 
 // add new language 
@@ -47,6 +59,9 @@ const listLanguage = async (req, res) => {
 
 const addLanguage = async (req, res) => {
     const { name, description } = req.body;
+    if (name == "") {
+        return res.redirect('/create-langue');
+    }
     const newLanguage = new Language({
         name,
         description,

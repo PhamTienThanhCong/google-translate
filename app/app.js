@@ -9,7 +9,7 @@ const bodyparser = require('body-parser');
 hbs.registerPartials(__dirname + '/views/partials') // partials view
 app.set('view engine', 'hbs'); // engine view
 
-// app.use(bodyparser.urlencoded());
+app.use(bodyparser.urlencoded());
 app.use(bodyparser.json());
 
 app.use(express.static(path.join(__dirname, '../public')));

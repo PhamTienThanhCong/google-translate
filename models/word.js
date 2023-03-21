@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
-  word: String,
+  word: {
+    type: String,
+    required: true,
+  },
   description: String,
   // language int 32
   language: String,

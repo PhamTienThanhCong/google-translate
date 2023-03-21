@@ -104,21 +104,13 @@
                 }else{
                     root_langue.innerHTML = ``;
                     for (let i = 0; i < response.length; i++){
-                        if (response[i].description){
-                            root_langue.innerHTML += `
+                        root_langue.innerHTML += `
                             <li class="trans-list">
-                                <b>${response[i].word}</b>
+                                <b>${response[i].foreign_languages}</b>
                                 <p>- 설명하다: ${ response[i].description }</p>
-                                <p><i class="fa-regular fa-star"></i> 평가하다: ${ response[i].vote_up } <i class="fa-regular fa-thumbs-up"></i> | ${ response[i].vote_down } <i class="fa-regular fa-thumbs-down"></i> | <a href="/vote/${ response[i].id_trans }">지금 평가 <i class="fa-regular fa-handshake"></i></a></p>
+                                <p><i class="fa-regular fa-star"></i> 평가하다: ${ response[i].vote_up } <i class="fa-regular fa-thumbs-up"></i> | ${ response[i].vote_down } <i class="fa-regular fa-thumbs-down"></i> | <a href="/vote/${ response[i]._id }">지금 평가 <i class="fa-regular fa-handshake"></i></a></p>
                             </li>
                         `
-                        }else{
-                            root_langue.innerHTML += `
-                            <li class="trans-list">
-                                <b>${response[i].word}</b>
-                            </li>
-                        `
-                        }
                     }
                 }
             }

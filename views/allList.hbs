@@ -24,7 +24,7 @@
             <div class="nav-slider">
                 <ul>
                     {{#each data}}
-                        <li id="{{this._id}}"><a href="#" onclick="find_world('{{this.word}}')">{{this.word}}</a></li>
+                        <li ><a href="#" onclick="find_world('{{this}}')">{{this}}</a></li>
                     {{/each}}
                 </ul>
             </div>
@@ -103,7 +103,7 @@
                         }
                         root.innerHTML += `
                             <li id="${response[i].id_trans}">
-                                <b>번역하다: ${response[i].word}</b> 
+                                <b>번역하다: ${response[i].foreign_languages}</b> 
                                 <br>
                                 <span>- 설명하다: ${response[i].description}</span>
                                 <br>

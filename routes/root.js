@@ -5,11 +5,11 @@ const adminController = require('../controllers/adminController');
 module.exports = (app) => {
   app.route('/').get(root_controller.translate)
   app.route('/list-word').get(root_controller.list_word)
-  // app.route('/save').post(root_controller.add)
   app.route('/find').get(root_controller.api_find_word)
   app.route('/delete').post(root_controller.delete_list)
   app.route('/vote/:id').get(root_controller.vote)
-
+  app.route('/vote').post(root_controller.addVote)
+  app.route('/thankiu/:id').get(root_controller.thankiu)
 
   app.route('/all-list').get(adminController.allList);
   app.route('/create').get(adminController.index)
@@ -17,7 +17,6 @@ module.exports = (app) => {
   app.route('/create-langue').get(adminController.listLanguage);
   app.route('/create-langue-action').post(adminController.addLanguage);
   app.route('/deleteLanguage/:id').get(adminController.deleteLanguage);
-
 
   app.route('/logout').get(auth_controller.logout)
   // auth

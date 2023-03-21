@@ -8,7 +8,6 @@ function login(req, res) {
 function login_activity(req, res) {
     // get data from the form
     const { username, password } = req.body;
-    return res.send({ username, password });
     // check if the username and password are correct in the database
     auth.findOne({ username, password }, (err, data) => {
         if (err) {
