@@ -9,8 +9,5 @@ module.exports = {
   database: {
     uri: process.env.mongoose_url,
     database_name: process.env.database_name
-  },
-  logger: {
-    file_name: process.env.environment
   }
 }

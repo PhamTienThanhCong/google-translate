@@ -6,7 +6,8 @@ const TaskSchema = new Schema({
   description: String,
   // language int 32
   language: String,
+  language_name: String,
   // writeConcern
 });
 
-module.exports = mongoose.model('foreign_languages', TaskSchema);
+module.exports = mongoose.model('word', TaskSchema);

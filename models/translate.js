@@ -2,8 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
-  id_tv: String,
-  id_tt: String,
+  korea: {
+    // object word
+    type: Object,
+    default: {}
+  },
+  foreign_languages:{
+    type: Object,
+    default: {}
+  },
   vote_down: {
     type: Number,
     default: 0
@@ -12,6 +19,10 @@ const TaskSchema = new Schema({
     type: Number,
     default: 0
   },
+  votes: {
+    type: Array,
+    default: []
+  }
 });
 
 module.exports = mongoose.model('translates', TaskSchema);
