@@ -1,0 +1,87 @@
+
+h1{
+    text-align: center;
+}
+
+.container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.container1, .container2, .container3{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.box-translate{
+    width: 600px;
+    display: flex;
+    text-align: center;
+}
+
+.box-translate p{
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.content-left, .content-right{
+    width: 40%;
+    padding: 20px;
+}
+
+.content-center{
+    width: 20%;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.form-submit{
+    border-top: 1px solid #ccc;
+    padding-top: 40px;
+    width:500px;
+}
+
+.form-group{
+    width: 100%;
+    display: flex;
+    /* space-between */
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-group textarea{
+    width: 100%;
+    resize: none;
+    padding: 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+.form-group button{
+    width: 100%;
+    padding: 7px;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgb(47, 47, 250);
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+/* input radio opacity 0 */
+input[type="radio"]{
+    opacity: 0;
+}
+
+label{
+    cursor: pointer;
+}
+
+.active{
+    color: blue;
+}

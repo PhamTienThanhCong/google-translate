@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>언어 설명</title>
+    <script src="https://kit.fontawesome.com/c71231073e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/vote.css"> 
+</head>
+<body>
+    <h1>
+        언어 설명
+    </h1>
+
+    <div class="container">
+        <div class="container1">
+            <div class="box-translate">
+                <div class="content-left">
+                    <p>
+                        {{ data_korean }}
+                    </p>
+                    <span>
+                        한국
+                    </span>
+                </div>
+                <div class="content-center">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+                <div class="content-right">
+                    <p>
+                        {{ foreign_language }}
+                    </p>
+                    <span>
+                        {{ language_tt }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container2">
+            <form class="form-submit" >
+                <div class="form-group">
+                    <label for="vote1" id="label-check1" class="active">
+                        <i class="fa-regular fa-thumbs-up"></i> 동의하다
+                    </label>
+                    <input type="radio" name="vote" id="vote1" value="like" checked>
+                    
+                    <label for="vote2" id="label-check2">
+                        <i class="fa-regular fa-thumbs-down"></i> 동의하지 않는다 
+                    </label>
+                    <input type="radio" name="vote" id="vote2" value="unlike">
+                </div>
+                <div class="form-group">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="당신의 생각을 쓰십시오"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">
+                        보내다
+                    </button>
+                </div>
+                
+                <a href="/">당신은 더 이상의 논쟁이 없습니다</a>
+            </form>
+        </div>
+
+    </div>
+</body>
+<script>
+    const labelCheck1 = document.getElementById('label-check1');
+    const labelCheck2 = document.getElementById('label-check2');
+    const vote1 = document.getElementById('vote1');
+    const vote2 = document.getElementById('vote2');
+
+    labelCheck1.addEventListener('click', () => {
+        labelCheck1.classList.add('active');
+        labelCheck2.classList.remove('active');
+        vote1.checked = true;
+    })
+
+    labelCheck2.addEventListener('click', () => {
+        labelCheck2.classList.add('active');
+        labelCheck1.classList.remove('active');
+        vote2.checked = true;
+    })
+</script>
+</html>

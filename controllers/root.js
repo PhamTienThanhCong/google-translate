@@ -297,6 +297,29 @@ const delete_list = async (req, res) => {
   });
 }
 
+const vote = async (req, res) => {
+  // get id from url params
+  let { id } = req.params;
+  try {
+    // get data translate by id
+    let data_translate = await Translate.findById(id);
+    let data_korean = await Korean.findById(data_translate.id_tv);
+    let data_foreign_language = await Foreign_language.findById(data_translate.id_tt);
+    let language_tt = await Language.findById(data_foreign_language.language);
+    data_korean = data_korean.word;
+    language_tt = language_tt.name;
+    let foreign_language = data_foreign_language.word;
+    res.render('vote', {
+      data_translate,
+      data_korean,
+      foreign_language,
+      language_tt
+    });
+  } catch (error) {
+    res.send(error);
+  }
+}
+
 module.exports = {
   index,
   add,
@@ -308,4 +331,5 @@ module.exports = {
   listLanguage,
   deleteLanguage,
   list_word,
+  vote
 }

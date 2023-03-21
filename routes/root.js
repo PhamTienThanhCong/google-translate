@@ -18,7 +18,11 @@ module.exports = (app) => {
   app.route('/save').post(root_controller.add)
 
   app.route('/logout').get(auth_controller.logout)
+  
   // auth
   app.route('/login').get(auth_controller.login)
   app.route('/login_activity').post(auth_controller.login_activity)
+
+  // get method vote
+  app.route('/vote/:id').get(root_controller.vote)
 }
