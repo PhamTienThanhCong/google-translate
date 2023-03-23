@@ -2,6 +2,9 @@ const Translate = require('../models/translate');
 const Language = require('../models/language');
 
 const allList = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
     let { keyword } = req.query;
     if (keyword == undefined) {
         keyword = "";
@@ -13,6 +16,9 @@ const allList = async (req, res) => {
 }
 // create langue
 const index = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
     // render the index page
     let languages = await Language.find({});
     res.render('index', { languages });
@@ -20,6 +26,9 @@ const index = async (req, res) => {
 
 // function get data from post request
 const add = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
     const { text1, text2, language, description } = req.body;
     const language_id = language.split('&')[0];
     const language_name = language.split('&')[1];
@@ -48,9 +57,9 @@ const add = async (req, res) => {
 // add new language 
 const listLanguage = async (req, res) => {
     try {
-        // if (!req.session.daDangNhap) {
-        //     return res.redirect('/login');
-        // }
+        if (!req.session.daDangNhap) {
+            return res.redirect('/login');
+        }
         const languages = await Language.find({});
         res.render('list_language', { languages });
     } catch (error) {
@@ -58,6 +67,9 @@ const listLanguage = async (req, res) => {
 }
 
 const addLanguage = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
     const { name, description } = req.body;
     if (name == "") {
         return res.redirect('/create-langue');
@@ -76,12 +88,33 @@ const addLanguage = async (req, res) => {
 }
 
 const deleteLanguage = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
     const { id } = req.params;
     try {
         await Language.findByIdAndDelete(id);
     } catch (error) {
     }
     return res.redirect('/create-langue');
+}
+
+const viewVote = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
+    const { id } = req.params;
+    const getData = await Translate.findById(id);
+    // map get data
+    const mapData = getData.votes.map((item) => {
+        return {
+            description: item.description,
+            vote: item.vote === 'like' ? 'fa-regular fa-thumbs-up vote-green' : 'fa-regular fa-thumbs-down vote-red',
+            // format date time
+            time: new Date(item.time).toLocaleString('en-US', { timeZone: 'Asia/Seoul' })
+        };
+    });
+    res.render('viewVote', { getData, mapData });
 }
 
 
@@ -92,4 +125,5 @@ module.exports = {
     listLanguage,
     addLanguage,
     deleteLanguage,
+    viewVote
 };

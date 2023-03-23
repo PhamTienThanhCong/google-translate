@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/viewVote.css">
+    <script src="https://kit.fontawesome.com/c71231073e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>
+        언어 설명
+    </h1>
+
+    <div class="container">
+        <div class="container1">
+            <div class="box-translate">
+                <div class="content-left">
+                    <p>
+                        {{ getData.korea }}
+                    </p>
+                    <span>
+                        한국
+                    </span>
+                </div>
+                <div class="content-center">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+                <div class="content-right">
+                    <p>
+                        {{ getData.foreign_languages }}
+                    </p>
+                    <span>
+                        {{ getData.language_name }}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <p style="text-align: left; width:500px">
+                게시자 설명: {{ getData.description }}
+                <br>
+                <br>
+                <span>
+                    투표: <i class="fa-regular fa-thumbs-up vote-green"></i> {{ getData.vote_up }} | <i class="fa-regular fa-thumbs-down vote-red"></i> {{ getData.vote_down }}
+                </span>
+                |
+                <a href="/all-list">
+                    다시 목록으로
+                </a>
+            </p>
+        </div>
+
+    <div class="container3">
+        <ol >
+            <div class="title-comment"> 
+                <b>
+                    댓글 목록
+                </b>
+            </div>
+            {{!-- for at getdata.votes --}}
+            {{#each mapData}}
+            <li>
+                 <p>
+                    <i class="{{ this.vote }}"></i>
+                    {{ this.description }}
+                </p>
+                <span>
+                    시간: {{ this.time }}
+                </span>
+            </li>
+            {{/each}}
+        </ol>
+    </div>
+</body>
+</html>

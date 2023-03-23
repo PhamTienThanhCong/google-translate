@@ -6,16 +6,6 @@ const translate = async (req, res) => {
   res.render('find_word', { languages });
 }
 
-const list_word = async (req, res) => {
-  let {keyword} = req.query;
-  if (keyword == undefined){
-    keyword = "";
-  }
-  let data = [];
-  let languages = await Language.find({});
-  res.render('allList_user', { data , keyword, languages: languages });
-}
-
 // write function api_find_word(req, res) 
 const api_find_word = async (req, res) => {
   let { type, word, language } = req.query;
@@ -27,6 +17,7 @@ const api_find_word = async (req, res) => {
       list_anouce = await Translate.find({korea: word, language: language});
     }
   }else{
+    word = word.toLowerCase();
     list_anouce = await Translate.find({foreign_languages: word, language: language});
     list_anouce.map((item) => {
       item.foreign_languages = item.korea;
@@ -94,6 +85,5 @@ module.exports = {
   translate,
   delete_list,
   api_find_word,
-  list_word,
   vote
 }
