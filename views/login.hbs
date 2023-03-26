@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 관리 페이지</title>
+    <title>관리자 페이지</title>
+    <link rel="icon" href="http://mail.seoultech.ac.kr/mail/img/favicon.png">
 </head>
 <style>
     .form-control{
-        display: block;
+        display:inline-block;
         width: 400px;
         margin: 0 auto;
         display: flex;
@@ -31,14 +32,27 @@
         margin-bottom: 10px;
         background-color: #ccc;
     }
+    a{
+        
+       text-decoration: none;
+       width: 40%;
+        font-size: 16px;
+        padding: 10px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
 </style>
 <body>
     <h1 style="text-align: center;">관리자</h1>
     <form action="/login_activity" method="POST" class="form-control">
-        <input type="text" name="username" placeholder="사용자 이름">
+        <input type="text" name="username" placeholder="ID">
         <input type="password" name="password" placeholder="비밀번호">
         <button type="submit">로그인</button>
-        <a href="/">조회 페이지로 돌아가기</a>
+        <a href="/">검색 장으로 돌아가기</a>
+        
+        
     </form>
+    
 </body>
 </html>

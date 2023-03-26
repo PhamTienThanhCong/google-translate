@@ -6,7 +6,7 @@ padding: 0;
 box-sizing: border-box;
 font-family: 'Poppins', sans-serif;
 }
-body{
+body:not(input){
 display: flex;
 align-items: center;
 justify-content: center;
@@ -123,11 +123,7 @@ background: #4534fe;
     padding-left: 10px;
     margin-bottom: 10px;
 }
-.button-change-page{
-  position: fixed;
-  top : 10px;
-  right: 10px;
-}
+
 .button-link{
   text-decoration: none;
   color: #fff;
@@ -135,4 +131,22 @@ background: #4534fe;
   padding: 10px 20px;
   border-radius: 5px;
   transition: 0.3s ease;
+}
+.ketqua{
+  display: inline-block;
+  border: 1px dashed #585351 ;
+  border-radius: 5px;
+  background-color: rgb(231, 231, 231);
+  margin-top: 10px;margin-left: 45%;
+  padding: 5px;
+}
+.button-change-page{
+  display: inline-block;
+  position: fixed;
+  top : 10px;
+  right: 10px;
+  padding: 5px;
+  border:2px solid #fff;
+  
+  
 }

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>언어 목록</title>
+    <title>언어 추가/삭제</title>
     <link rel="stylesheet" href="/css/list_language.css">
+    <link rel="icon" href="http://mail.seoultech.ac.kr/mail/img/favicon.png">
 </head>
 <body>
 </body>
@@ -14,10 +15,10 @@
     </a>
     <form action="/create-langue-action" method="POST" class="form-add-langue">
         <h1>
-            새로운 어학원 페이지
+            언어 페이지
         </h1>
         <input type="text" name="name" placeholder="언어 이름">
-        <input type="text" name="description" placeholder="설명하다">
+        <input type="text" name="description" placeholder="설명">
         <input type="submit" value="언어 추가" style="width:100%; cursor:pointer">
     </form>
 
@@ -28,8 +29,8 @@
             <thead>
                 <tr>
                     <th>언어 이름</th>
-                    <th>설명하다</th>
-                    <th>작업</th>
+                    <th>설명</th>
+                    <th>수정/삭제</th>
                 </tr>
             </thead>
             <tbody>
