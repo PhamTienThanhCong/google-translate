@@ -117,6 +117,18 @@ const viewVote = async (req, res) => {
     res.render('viewVote', { getData, mapData });
 }
 
+const delete_list = async (req, res) => {
+    if (!req.session.daDangNhap) {
+        return res.redirect('/login');
+    }
+    const { id } = req.params;
+    try {
+        await Translate.findByIdAndDelete(id);
+    } catch (error) {
+    }
+    return res.redirect('/all-list');
+}
+
 
 module.exports = {
     allList,
@@ -125,5 +137,6 @@ module.exports = {
     listLanguage,
     addLanguage,
     deleteLanguage,
+    delete_list,
     viewVote
 };

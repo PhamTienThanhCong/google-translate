@@ -29,10 +29,6 @@ const api_find_word = async (req, res) => {
 
 // add new value to Korean and Foreign_language 
 
-const delete_list = async (req, res) => {
-  
-}
-
 const vote = async (req, res) => {
   // get id from url params
   let { id } = req.params;
@@ -83,7 +79,6 @@ module.exports = {
   thankiu,
   addVote,
   translate,
-  delete_list,
   api_find_word,
   vote
 }

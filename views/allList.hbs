@@ -109,8 +109,6 @@
                                 <span>- 설명하다: ${response[i].description}</span>
                                 <br>
                                 <p><i class="fa-regular fa-star"></i> 평가하다: ${ response[i].vote_up } <i class="fa-regular fa-thumbs-up"></i> | ${ response[i].vote_down } <i class="fa-regular fa-thumbs-down"></i> | <a href="/view-vote/${ response[i]._id }">리뷰 보기 <i class="fa-solid fa-magnifying-glass"></i></a></p>
-                                <br>
-                                행동: <a href="#" onclick="delete_action('${response[i].id_trans}')">사전 지우기</a>
                             </li>
                         `;
                     }
